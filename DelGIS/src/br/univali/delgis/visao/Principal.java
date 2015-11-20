@@ -19,12 +19,19 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel_Principal = new javax.swing.JPanel();
+        tabbedPane = new javax.swing.JTabbedPane();
+        panel_Ocorrencias = new javax.swing.JPanel();
         scrollPane_Ocorrencias = new javax.swing.JScrollPane();
         table_Ocorrencias = new javax.swing.JTable();
         button_Excluir = new javax.swing.JButton();
         button_Novo = new javax.swing.JButton();
         label_Separador1 = new javax.swing.JLabel();
+        panel_Bairros = new javax.swing.JPanel();
+        scrollPane_Ocorrencias1 = new javax.swing.JScrollPane();
+        table_Ocorrencias1 = new javax.swing.JTable();
+        button_Excluir1 = new javax.swing.JButton();
+        button_Novo1 = new javax.swing.JButton();
+        label_Separador2 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         menu_Gerenciar = new javax.swing.JMenu();
         menuItem_Bairro = new javax.swing.JMenuItem();
@@ -45,9 +52,6 @@ public class Principal extends javax.swing.JFrame {
 
         table_Ocorrencias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
@@ -75,6 +79,9 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         scrollPane_Ocorrencias.setViewportView(table_Ocorrencias);
+        if (table_Ocorrencias.getColumnModel().getColumnCount() > 0) {
+            table_Ocorrencias.getColumnModel().getColumn(3).setHeaderValue("Tipo");
+        }
 
         button_Excluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Excluir.setText("Excluir");
@@ -97,41 +104,127 @@ public class Principal extends javax.swing.JFrame {
         label_Separador1.setForeground(new java.awt.Color(102, 102, 102));
         label_Separador1.setText("Ocorrências");
 
-        javax.swing.GroupLayout panel_PrincipalLayout = new javax.swing.GroupLayout(panel_Principal);
-        panel_Principal.setLayout(panel_PrincipalLayout);
-        panel_PrincipalLayout.setHorizontalGroup(
-            panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PrincipalLayout.createSequentialGroup()
-                .addContainerGap(109, Short.MAX_VALUE)
-                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panel_OcorrenciasLayout = new javax.swing.GroupLayout(panel_Ocorrencias);
+        panel_Ocorrencias.setLayout(panel_OcorrenciasLayout);
+        panel_OcorrenciasLayout.setHorizontalGroup(
+            panel_OcorrenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_OcorrenciasLayout.createSequentialGroup()
+                .addContainerGap(84, Short.MAX_VALUE)
+                .addGroup(panel_OcorrenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label_Separador1)
-                    .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_OcorrenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(scrollPane_Ocorrencias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PrincipalLayout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_OcorrenciasLayout.createSequentialGroup()
                             .addComponent(button_Novo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(31, 31, 31)
                             .addComponent(button_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(239, 239, 239))))
                 .addGap(97, 97, 97))
         );
-        panel_PrincipalLayout.setVerticalGroup(
-            panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_PrincipalLayout.createSequentialGroup()
+        panel_OcorrenciasLayout.setVerticalGroup(
+            panel_OcorrenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_OcorrenciasLayout.createSequentialGroup()
                 .addGap(94, 94, 94)
                 .addComponent(label_Separador1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrollPane_Ocorrencias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panel_OcorrenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(button_Excluir)
                     .addComponent(button_Novo))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
+
+        tabbedPane.addTab("Ocorrências", panel_Ocorrencias);
+
+        table_Ocorrencias1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "Nome", "Coordenadas"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table_Ocorrencias1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_Ocorrencias1MouseClicked(evt);
+            }
+        });
+        scrollPane_Ocorrencias1.setViewportView(table_Ocorrencias1);
+
+        button_Excluir1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Excluir1.setText("Excluir");
+        button_Excluir1.setEnabled(false);
+        button_Excluir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_Excluir1ActionPerformed(evt);
+            }
+        });
+
+        button_Novo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Novo1.setText("Novo");
+        button_Novo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_Novo1ActionPerformed(evt);
+            }
+        });
+
+        label_Separador2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        label_Separador2.setForeground(new java.awt.Color(102, 102, 102));
+        label_Separador2.setText("Bairros");
+
+        javax.swing.GroupLayout panel_BairrosLayout = new javax.swing.GroupLayout(panel_Bairros);
+        panel_Bairros.setLayout(panel_BairrosLayout);
+        panel_BairrosLayout.setHorizontalGroup(
+            panel_BairrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_BairrosLayout.createSequentialGroup()
+                .addContainerGap(84, Short.MAX_VALUE)
+                .addGroup(panel_BairrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_Separador2)
+                    .addGroup(panel_BairrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(scrollPane_Ocorrencias1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_BairrosLayout.createSequentialGroup()
+                            .addComponent(button_Novo1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(31, 31, 31)
+                            .addComponent(button_Excluir1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(239, 239, 239))))
+                .addGap(97, 97, 97))
+        );
+        panel_BairrosLayout.setVerticalGroup(
+            panel_BairrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_BairrosLayout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addComponent(label_Separador2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrollPane_Ocorrencias1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panel_BairrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(button_Excluir1)
+                    .addComponent(button_Novo1))
+                .addContainerGap(87, Short.MAX_VALUE))
+        );
+
+        tabbedPane.addTab("Bairros", panel_Bairros);
 
         menu_Gerenciar.setText("Gerenciar");
 
         menuItem_Bairro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
-        menuItem_Bairro.setText("Bairro");
+        menuItem_Bairro.setText("Novo Bairro");
         menuItem_Bairro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItem_BairroActionPerformed(evt);
@@ -140,7 +233,7 @@ public class Principal extends javax.swing.JFrame {
         menu_Gerenciar.add(menuItem_Bairro);
 
         menuItem_Ocorrencia.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
-        menuItem_Ocorrencia.setText("Ocorrência");
+        menuItem_Ocorrencia.setText("Nova Ocorrência");
         menuItem_Ocorrencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItem_OcorrenciaActionPerformed(evt);
@@ -162,11 +255,6 @@ public class Principal extends javax.swing.JFrame {
         menu_Relatorio.setText("Relatórios");
 
         menuItem_Relatorio.setText("Ocorrências por Bairro");
-        menuItem_Relatorio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItem_RelatorioActionPerformed(evt);
-            }
-        });
         menu_Relatorio.add(menuItem_Relatorio);
 
         menuBar.add(menu_Relatorio);
@@ -175,11 +263,6 @@ public class Principal extends javax.swing.JFrame {
         menuBar.add(menu_Sobre);
 
         menu_Sair.setText("Sair");
-        menu_Sair.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menu_SairMouseClicked(evt);
-            }
-        });
         menuBar.add(menu_Sair);
 
         setJMenuBar(menuBar);
@@ -188,11 +271,17 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tabbedPane)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tabbedPane)
+                .addContainerGap())
         );
 
         pack();
@@ -200,51 +289,49 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuItem_TipoOcorrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_TipoOcorrenciaActionPerformed
-        button_Novo.doClick();
+        new TiposOcorrencias(this, true).setVisible(true);
     }//GEN-LAST:event_menuItem_TipoOcorrenciaActionPerformed
 
     private void menuItem_BairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_BairroActionPerformed
+        tabbedPane.setSelectedIndex(1);
         new Bairro(this, true).setVisible(true);
     }//GEN-LAST:event_menuItem_BairroActionPerformed
 
     private void menuItem_OcorrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_OcorrenciaActionPerformed
-        new Ocorrencia(this, true).setVisible(true);
+        tabbedPane.setSelectedIndex(0);
+        button_Novo.doClick();
     }//GEN-LAST:event_menuItem_OcorrenciaActionPerformed
 
     private void table_OcorrenciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_OcorrenciasMouseClicked
-
         if (evt.getClickCount() == 1) {
-            idSelecionado = Integer.parseInt((String) table_Ocorrencias.getValueAt(table_Ocorrencias.getSelectedRow(), 0));
+            //idSelecionado = Integer.parseInt((String) table_Ocorrencias.getValueAt(table_Ocorrencias.getSelectedRow(), 0));
             button_Excluir.setEnabled(true);
         }
-
-        if (evt.getClickCount() == 2) {
-        }
-
     }//GEN-LAST:event_table_OcorrenciasMouseClicked
 
     private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
-//        Chamado chamado = new Chamado(this, true, "novo");
-//        chamado.IDUser = IDUser;
-//        chamado.setVisible(true);
-//        atualizaTabela(comboBox_Filtro.getSelectedItem().toString());
+        new Ocorrencia(this, true).setVisible(true);
     }//GEN-LAST:event_button_NovoActionPerformed
 
     private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
-//        button_Excluir.setEnabled(false);
+        button_Excluir.setEnabled(false);
     }//GEN-LAST:event_button_ExcluirActionPerformed
-
-    private void menuItem_RelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_RelatorioActionPerformed
-
-    }//GEN-LAST:event_menuItem_RelatorioActionPerformed
-
-    private void menu_SairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_SairMouseClicked
-
-    }//GEN-LAST:event_menu_SairMouseClicked
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
 
     }//GEN-LAST:event_formWindowClosing
+
+    private void table_Ocorrencias1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_Ocorrencias1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_table_Ocorrencias1MouseClicked
+
+    private void button_Excluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_Excluir1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button_Excluir1ActionPerformed
+
+    private void button_Novo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_Novo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button_Novo1ActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -267,8 +354,11 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_Excluir;
+    private javax.swing.JButton button_Excluir1;
     private javax.swing.JButton button_Novo;
+    private javax.swing.JButton button_Novo1;
     private javax.swing.JLabel label_Separador1;
+    private javax.swing.JLabel label_Separador2;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuItem_Bairro;
     private javax.swing.JMenuItem menuItem_Ocorrencia;
@@ -278,8 +368,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu menu_Relatorio;
     private javax.swing.JMenu menu_Sair;
     private javax.swing.JMenu menu_Sobre;
-    private javax.swing.JPanel panel_Principal;
+    private javax.swing.JPanel panel_Bairros;
+    private javax.swing.JPanel panel_Ocorrencias;
     private javax.swing.JScrollPane scrollPane_Ocorrencias;
+    private javax.swing.JScrollPane scrollPane_Ocorrencias1;
+    private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JTable table_Ocorrencias;
+    private javax.swing.JTable table_Ocorrencias1;
     // End of variables declaration//GEN-END:variables
 }
