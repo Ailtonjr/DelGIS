@@ -18,7 +18,6 @@ public class Ocorrencia extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         panel_Principal = new javax.swing.JPanel();
         label_Descricao = new javax.swing.JLabel();
@@ -33,7 +32,7 @@ public class Ocorrencia extends javax.swing.JDialog {
         button_Confirmar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Sistema de Chamados - Usuários");
+        setTitle("DelGIS - Nova Ocorrência");
         setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -62,10 +61,6 @@ public class Ocorrencia extends javax.swing.JDialog {
 
         button_Confirmar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Confirmar.setText("Confirmar");
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, new javax.swing.JTextField(), org.jdesktop.beansbinding.ObjectProperty.create(), button_Confirmar, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
-        bindingGroup.addBinding(binding);
-
         button_Confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_ConfirmarActionPerformed(evt);
@@ -134,8 +129,6 @@ public class Ocorrencia extends javax.swing.JDialog {
                 .addGap(0, 8, Short.MAX_VALUE))
         );
 
-        bindingGroup.bind();
-
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -181,6 +174,5 @@ public class Ocorrencia extends javax.swing.JDialog {
     private javax.swing.JLabel label_Lat;
     private javax.swing.JLabel label_Long;
     private javax.swing.JPanel panel_Principal;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

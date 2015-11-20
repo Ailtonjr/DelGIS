@@ -43,7 +43,7 @@ public class Principal extends javax.swing.JFrame {
         menu_Sair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("DelGIS - Ocorrências");
+        setTitle("DelGIS - Início");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);

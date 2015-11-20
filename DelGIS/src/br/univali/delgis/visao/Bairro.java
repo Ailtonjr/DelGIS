@@ -162,7 +162,7 @@ public class Bairro extends javax.swing.JDialog {
         label_Lat.setText("Latitude");
 
         button_Salvar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        button_Salvar.setText("Salvar");
+        button_Salvar.setText("Add");
         button_Salvar.setEnabled(false);
         button_Salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,31 +195,31 @@ public class Bairro extends javax.swing.JDialog {
                                             .addGap(18, 18, 18)
                                             .addComponent(button_Excluir)
                                             .addGap(18, 18, 18)
-                                            .addComponent(button_Salvar))
+                                            .addComponent(button_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(panel_PrincipalLayout.createSequentialGroup()
                                             .addComponent(label_Separador)
                                             .addGap(14, 14, 14)
                                             .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(field_Long, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_PrincipalLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(scrollPane_Coordenadas))
+                    .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_PrincipalLayout.createSequentialGroup()
                             .addGap(160, 160, 160)
                             .addComponent(button_EditarBairro)
                             .addGap(26, 26, 26)
                             .addComponent(button_SalvarBairro)
-                            .addGap(140, 140, 140))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(panel_PrincipalLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(label_Long)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(field_Lat, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label_Lat)))))
+                                .addComponent(label_Lat)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_PrincipalLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(scrollPane_Coordenadas)))
+                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(field_Long, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(319, 319, 319))
         );
         panel_PrincipalLayout.setVerticalGroup(

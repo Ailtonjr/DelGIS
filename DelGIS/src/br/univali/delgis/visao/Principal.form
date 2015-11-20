@@ -71,7 +71,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="DelGIS - Ocorr&#xea;ncias"/>
+    <Property name="title" type="java.lang.String" value="DelGIS - In&#xed;cio"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="menuBar"/>
