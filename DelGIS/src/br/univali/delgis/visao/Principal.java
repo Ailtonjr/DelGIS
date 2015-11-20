@@ -208,8 +208,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItem_BairroActionPerformed
 
     private void menuItem_OcorrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_OcorrenciaActionPerformed
-//        Cliente cliente = new Cliente(this, true);
-//        cliente.setVisible(true);
+        new Ocorrencia(this, true).setVisible(true);
     }//GEN-LAST:event_menuItem_OcorrenciaActionPerformed
 
     private void table_OcorrenciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_OcorrenciasMouseClicked
