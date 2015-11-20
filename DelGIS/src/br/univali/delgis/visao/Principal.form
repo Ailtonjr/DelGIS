@@ -78,9 +78,6 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
-  <Events>
-    <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
-  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -133,13 +130,13 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="84" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="label_Separador1" min="-2" max="-2" attributes="0"/>
+                          <Component id="label_SeparadorOcorrencia" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="scrollPane_Ocorrencias" alignment="1" min="-2" pref="693" max="-2" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="button_Novo" min="-2" pref="93" max="-2" attributes="0"/>
+                                  <Component id="button_NovoOcorrencia" min="-2" pref="93" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                  <Component id="button_Excluir" min="-2" pref="93" max="-2" attributes="0"/>
+                                  <Component id="button_ExcluirOcorrencia" min="-2" pref="93" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -152,13 +149,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
-                      <Component id="label_Separador1" min="-2" max="-2" attributes="0"/>
+                      <Component id="label_SeparadorOcorrencia" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="scrollPane_Ocorrencias" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="button_Excluir" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="button_Novo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="button_ExcluirOcorrencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="button_NovoOcorrencia" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="87" max="32767" attributes="0"/>
                   </Group>
@@ -217,7 +214,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="button_Excluir">
+            <Component class="javax.swing.JButton" name="button_ExcluirOcorrencia">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
@@ -226,10 +223,10 @@
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_ExcluirActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_ExcluirOcorrenciaActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="button_Novo">
+            <Component class="javax.swing.JButton" name="button_NovoOcorrencia">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
@@ -237,10 +234,10 @@
                 <Property name="text" type="java.lang.String" value="Novo"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_NovoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_NovoOcorrenciaActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="label_Separador1">
+            <Component class="javax.swing.JLabel" name="label_SeparadorOcorrencia">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
@@ -268,13 +265,13 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="84" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="label_Separador2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="label_SeparadorBairros" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                              <Component id="scrollPane_Ocorrencias1" alignment="1" min="-2" pref="693" max="-2" attributes="0"/>
+                              <Component id="scrollPane_Bairros" alignment="1" min="-2" pref="693" max="-2" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="button_Novo1" min="-2" pref="93" max="-2" attributes="0"/>
+                                  <Component id="button_NovoBairro" min="-2" pref="93" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                  <Component id="button_Excluir1" min="-2" pref="93" max="-2" attributes="0"/>
+                                  <Component id="button_ExcluirBairro" min="-2" pref="93" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -287,13 +284,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
-                      <Component id="label_Separador2" min="-2" max="-2" attributes="0"/>
+                      <Component id="label_SeparadorBairros" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="scrollPane_Ocorrencias1" min="-2" max="-2" attributes="0"/>
+                      <Component id="scrollPane_Bairros" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="button_Excluir1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="button_Novo1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="button_ExcluirBairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="button_NovoBairro" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="87" max="32767" attributes="0"/>
                   </Group>
@@ -301,14 +298,14 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="scrollPane_Ocorrencias1">
+            <Container class="javax.swing.JScrollPane" name="scrollPane_Bairros">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="table_Ocorrencias1">
+                <Component class="javax.swing.JTable" name="table_Bairros">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="3" rowCount="1">
@@ -341,12 +338,12 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="table_Ocorrencias1MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="table_BairrosMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="button_Excluir1">
+            <Component class="javax.swing.JButton" name="button_ExcluirBairro">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
@@ -355,10 +352,10 @@
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_Excluir1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_ExcluirBairroActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="button_Novo1">
+            <Component class="javax.swing.JButton" name="button_NovoBairro">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
@@ -366,10 +363,10 @@
                 <Property name="text" type="java.lang.String" value="Novo"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_Novo1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_NovoBairroActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="label_Separador2">
+            <Component class="javax.swing.JLabel" name="label_SeparadorBairros">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>

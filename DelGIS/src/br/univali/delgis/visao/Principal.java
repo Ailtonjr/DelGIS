@@ -23,15 +23,15 @@ public class Principal extends javax.swing.JFrame {
         panel_Ocorrencias = new javax.swing.JPanel();
         scrollPane_Ocorrencias = new javax.swing.JScrollPane();
         table_Ocorrencias = new javax.swing.JTable();
-        button_Excluir = new javax.swing.JButton();
-        button_Novo = new javax.swing.JButton();
-        label_Separador1 = new javax.swing.JLabel();
+        button_ExcluirOcorrencia = new javax.swing.JButton();
+        button_NovoOcorrencia = new javax.swing.JButton();
+        label_SeparadorOcorrencia = new javax.swing.JLabel();
         panel_Bairros = new javax.swing.JPanel();
-        scrollPane_Ocorrencias1 = new javax.swing.JScrollPane();
-        table_Ocorrencias1 = new javax.swing.JTable();
-        button_Excluir1 = new javax.swing.JButton();
-        button_Novo1 = new javax.swing.JButton();
-        label_Separador2 = new javax.swing.JLabel();
+        scrollPane_Bairros = new javax.swing.JScrollPane();
+        table_Bairros = new javax.swing.JTable();
+        button_ExcluirBairro = new javax.swing.JButton();
+        button_NovoBairro = new javax.swing.JButton();
+        label_SeparadorBairros = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         menu_Gerenciar = new javax.swing.JMenu();
         menuItem_Bairro = new javax.swing.JMenuItem();
@@ -44,11 +44,6 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DelGIS - Início");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
 
         table_Ocorrencias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,26 +78,26 @@ public class Principal extends javax.swing.JFrame {
             table_Ocorrencias.getColumnModel().getColumn(3).setHeaderValue("Tipo");
         }
 
-        button_Excluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        button_Excluir.setText("Excluir");
-        button_Excluir.setEnabled(false);
-        button_Excluir.addActionListener(new java.awt.event.ActionListener() {
+        button_ExcluirOcorrencia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_ExcluirOcorrencia.setText("Excluir");
+        button_ExcluirOcorrencia.setEnabled(false);
+        button_ExcluirOcorrencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_ExcluirActionPerformed(evt);
+                button_ExcluirOcorrenciaActionPerformed(evt);
             }
         });
 
-        button_Novo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        button_Novo.setText("Novo");
-        button_Novo.addActionListener(new java.awt.event.ActionListener() {
+        button_NovoOcorrencia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_NovoOcorrencia.setText("Novo");
+        button_NovoOcorrencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_NovoActionPerformed(evt);
+                button_NovoOcorrenciaActionPerformed(evt);
             }
         });
 
-        label_Separador1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        label_Separador1.setForeground(new java.awt.Color(102, 102, 102));
-        label_Separador1.setText("Ocorrências");
+        label_SeparadorOcorrencia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        label_SeparadorOcorrencia.setForeground(new java.awt.Color(102, 102, 102));
+        label_SeparadorOcorrencia.setText("Ocorrências");
 
         javax.swing.GroupLayout panel_OcorrenciasLayout = new javax.swing.GroupLayout(panel_Ocorrencias);
         panel_Ocorrencias.setLayout(panel_OcorrenciasLayout);
@@ -111,13 +106,13 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_OcorrenciasLayout.createSequentialGroup()
                 .addContainerGap(84, Short.MAX_VALUE)
                 .addGroup(panel_OcorrenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label_Separador1)
+                    .addComponent(label_SeparadorOcorrencia)
                     .addGroup(panel_OcorrenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(scrollPane_Ocorrencias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_OcorrenciasLayout.createSequentialGroup()
-                            .addComponent(button_Novo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_NovoOcorrencia, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(31, 31, 31)
-                            .addComponent(button_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_ExcluirOcorrencia, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(239, 239, 239))))
                 .addGap(97, 97, 97))
         );
@@ -125,19 +120,19 @@ public class Principal extends javax.swing.JFrame {
             panel_OcorrenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_OcorrenciasLayout.createSequentialGroup()
                 .addGap(94, 94, 94)
-                .addComponent(label_Separador1)
+                .addComponent(label_SeparadorOcorrencia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrollPane_Ocorrencias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panel_OcorrenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(button_Excluir)
-                    .addComponent(button_Novo))
+                    .addComponent(button_ExcluirOcorrencia)
+                    .addComponent(button_NovoOcorrencia))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Ocorrências", panel_Ocorrencias);
 
-        table_Ocorrencias1.setModel(new javax.swing.table.DefaultTableModel(
+        table_Bairros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null}
             },
@@ -160,33 +155,33 @@ public class Principal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        table_Ocorrencias1.addMouseListener(new java.awt.event.MouseAdapter() {
+        table_Bairros.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                table_Ocorrencias1MouseClicked(evt);
+                table_BairrosMouseClicked(evt);
             }
         });
-        scrollPane_Ocorrencias1.setViewportView(table_Ocorrencias1);
+        scrollPane_Bairros.setViewportView(table_Bairros);
 
-        button_Excluir1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        button_Excluir1.setText("Excluir");
-        button_Excluir1.setEnabled(false);
-        button_Excluir1.addActionListener(new java.awt.event.ActionListener() {
+        button_ExcluirBairro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_ExcluirBairro.setText("Excluir");
+        button_ExcluirBairro.setEnabled(false);
+        button_ExcluirBairro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_Excluir1ActionPerformed(evt);
+                button_ExcluirBairroActionPerformed(evt);
             }
         });
 
-        button_Novo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        button_Novo1.setText("Novo");
-        button_Novo1.addActionListener(new java.awt.event.ActionListener() {
+        button_NovoBairro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_NovoBairro.setText("Novo");
+        button_NovoBairro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_Novo1ActionPerformed(evt);
+                button_NovoBairroActionPerformed(evt);
             }
         });
 
-        label_Separador2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        label_Separador2.setForeground(new java.awt.Color(102, 102, 102));
-        label_Separador2.setText("Bairros");
+        label_SeparadorBairros.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        label_SeparadorBairros.setForeground(new java.awt.Color(102, 102, 102));
+        label_SeparadorBairros.setText("Bairros");
 
         javax.swing.GroupLayout panel_BairrosLayout = new javax.swing.GroupLayout(panel_Bairros);
         panel_Bairros.setLayout(panel_BairrosLayout);
@@ -195,13 +190,13 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_BairrosLayout.createSequentialGroup()
                 .addContainerGap(84, Short.MAX_VALUE)
                 .addGroup(panel_BairrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label_Separador2)
+                    .addComponent(label_SeparadorBairros)
                     .addGroup(panel_BairrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(scrollPane_Ocorrencias1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(scrollPane_Bairros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_BairrosLayout.createSequentialGroup()
-                            .addComponent(button_Novo1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_NovoBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(31, 31, 31)
-                            .addComponent(button_Excluir1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_ExcluirBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(239, 239, 239))))
                 .addGap(97, 97, 97))
         );
@@ -209,13 +204,13 @@ public class Principal extends javax.swing.JFrame {
             panel_BairrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_BairrosLayout.createSequentialGroup()
                 .addGap(94, 94, 94)
-                .addComponent(label_Separador2)
+                .addComponent(label_SeparadorBairros)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(scrollPane_Ocorrencias1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollPane_Bairros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panel_BairrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(button_Excluir1)
-                    .addComponent(button_Novo1))
+                    .addComponent(button_ExcluirBairro)
+                    .addComponent(button_NovoBairro))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
 
@@ -293,45 +288,44 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItem_TipoOcorrenciaActionPerformed
 
     private void menuItem_BairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_BairroActionPerformed
-        tabbedPane.setSelectedIndex(1);
-        new Bairro(this, true).setVisible(true);
+        button_NovoBairro.doClick();
     }//GEN-LAST:event_menuItem_BairroActionPerformed
 
     private void menuItem_OcorrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_OcorrenciaActionPerformed
         tabbedPane.setSelectedIndex(0);
-        button_Novo.doClick();
+        button_NovoOcorrencia.doClick();
     }//GEN-LAST:event_menuItem_OcorrenciaActionPerformed
 
     private void table_OcorrenciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_OcorrenciasMouseClicked
         if (evt.getClickCount() == 1) {
             //idSelecionado = Integer.parseInt((String) table_Ocorrencias.getValueAt(table_Ocorrencias.getSelectedRow(), 0));
-            button_Excluir.setEnabled(true);
+            button_ExcluirOcorrencia.setEnabled(true);
         }
     }//GEN-LAST:event_table_OcorrenciasMouseClicked
 
-    private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
+    private void button_NovoOcorrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoOcorrenciaActionPerformed
         new Ocorrencia(this, true).setVisible(true);
-    }//GEN-LAST:event_button_NovoActionPerformed
+    }//GEN-LAST:event_button_NovoOcorrenciaActionPerformed
 
-    private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
-        button_Excluir.setEnabled(false);
-    }//GEN-LAST:event_button_ExcluirActionPerformed
+    private void button_ExcluirOcorrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirOcorrenciaActionPerformed
+        button_ExcluirOcorrencia.setEnabled(false);
+    }//GEN-LAST:event_button_ExcluirOcorrenciaActionPerformed
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-
-    }//GEN-LAST:event_formWindowClosing
-
-    private void table_Ocorrencias1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_Ocorrencias1MouseClicked
+    private void button_ExcluirBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirBairroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_table_Ocorrencias1MouseClicked
+    }//GEN-LAST:event_button_ExcluirBairroActionPerformed
 
-    private void button_Excluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_Excluir1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_button_Excluir1ActionPerformed
+    private void button_NovoBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoBairroActionPerformed
+        tabbedPane.setSelectedIndex(1);
+        new Bairro(this, true).setVisible(true);
+    }//GEN-LAST:event_button_NovoBairroActionPerformed
 
-    private void button_Novo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_Novo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_button_Novo1ActionPerformed
+    private void table_BairrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_BairrosMouseClicked
+        if (evt.getClickCount() == 1) {
+            //idSelecionado = Integer.parseInt((String) table_Ocorrencias.getValueAt(table_Ocorrencias.getSelectedRow(), 0));
+            button_ExcluirOcorrencia.setEnabled(true);
+        }
+    }//GEN-LAST:event_table_BairrosMouseClicked
 
     public static void main(String args[]) {
         try {
@@ -353,12 +347,12 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton button_Excluir;
-    private javax.swing.JButton button_Excluir1;
-    private javax.swing.JButton button_Novo;
-    private javax.swing.JButton button_Novo1;
-    private javax.swing.JLabel label_Separador1;
-    private javax.swing.JLabel label_Separador2;
+    private javax.swing.JButton button_ExcluirBairro;
+    private javax.swing.JButton button_ExcluirOcorrencia;
+    private javax.swing.JButton button_NovoBairro;
+    private javax.swing.JButton button_NovoOcorrencia;
+    private javax.swing.JLabel label_SeparadorBairros;
+    private javax.swing.JLabel label_SeparadorOcorrencia;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuItem_Bairro;
     private javax.swing.JMenuItem menuItem_Ocorrencia;
@@ -370,10 +364,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu menu_Sobre;
     private javax.swing.JPanel panel_Bairros;
     private javax.swing.JPanel panel_Ocorrencias;
+    private javax.swing.JScrollPane scrollPane_Bairros;
     private javax.swing.JScrollPane scrollPane_Ocorrencias;
-    private javax.swing.JScrollPane scrollPane_Ocorrencias1;
     private javax.swing.JTabbedPane tabbedPane;
+    private javax.swing.JTable table_Bairros;
     private javax.swing.JTable table_Ocorrencias;
-    private javax.swing.JTable table_Ocorrencias1;
     // End of variables declaration//GEN-END:variables
 }
