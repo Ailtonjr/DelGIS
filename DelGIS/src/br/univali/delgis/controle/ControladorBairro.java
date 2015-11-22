@@ -19,7 +19,7 @@ public class ControladorBairro {
     
     public void novoBairro(String nome, List<Ponto> poligono) {
         this.bairro = new Bairro(nome, poligono);
-
+        
     }
     
 }

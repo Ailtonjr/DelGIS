@@ -256,6 +256,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         menuBar.add(menu_Relatorio);
 
         menu_Sobre.setText("Sobre");
+        menu_Sobre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menu_SobreMouseClicked(evt);
+            }
+        });
         menuBar.add(menu_Sobre);
 
         menu_Sair.setText("Sair");
@@ -327,6 +332,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             button_ExcluirOcorrencia.setEnabled(true);
         }
     }//GEN-LAST:event_table_BairrosMouseClicked
+
+    private void menu_SobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_SobreMouseClicked
+        new JanelaSobre().setVisible(true);
+    }//GEN-LAST:event_menu_SobreMouseClicked
 
     public static void main(String args[]) {
         try {
