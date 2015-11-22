@@ -4,7 +4,6 @@ package br.univali.delgis.visao;
 
 public class JanelaOcorrencia extends javax.swing.JDialog {
 
-
     public JanelaOcorrencia(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

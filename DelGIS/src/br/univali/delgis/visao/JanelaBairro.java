@@ -1,8 +1,5 @@
 package br.univali.delgis.visao;
 
-import javax.swing.JFrame;
-import javax.swing.table.DefaultTableModel;
-
 
 public class JanelaBairro extends javax.swing.JDialog {
     //private DefaultTableModel modelo;

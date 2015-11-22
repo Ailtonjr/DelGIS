@@ -1,14 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.univali.delgis.controle;
 
-/**
- *
- * @author 5122929
- */
+import br.univali.delgis.modelo.Bairro;
+import br.univali.delgis.modelo.Conexao;
+import br.univali.delgis.modelo.Ponto;
+import java.sql.SQLException;
+import java.util.List;
+import javax.swing.JOptionPane;
+
+
 public class ControladorBairro {
+    private Bairro bairro;
+    private Conexao con;
+
+    public ControladorBairro() {
+        con = new Conexao(null, null, null);
+    }
+    
+    public void novoBairro(String nome, List<Ponto> poligono) {
+        this.bairro = new Bairro(nome, poligono);
+
+    }
     
 }

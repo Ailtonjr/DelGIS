@@ -9,12 +9,17 @@ public class Bairro {
     private String nome;
     private List<Ponto> coordenadas = new ArrayList();
 
+    public Bairro(String nome, List<Ponto> coordenadas) {
+        this.nome = nome;
+        this.coordenadas = coordenadas;
+    }
+    
     public void inserePonto(double lon, double lat) {
         coordenadas.add(new Ponto(lon, lat));
     }
     
-    public void deletaPonto(int id) {
-        
+    public void deletaPonto(int i) {
+        coordenadas.remove(i);
     }
     
     public String getNome() {
