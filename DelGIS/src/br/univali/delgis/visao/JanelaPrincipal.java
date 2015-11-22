@@ -13,6 +13,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     public JanelaPrincipal() {
         initComponents();
+        this.setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
