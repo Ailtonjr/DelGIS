@@ -6,12 +6,12 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 
-public class Principal extends javax.swing.JFrame {
+public class JanelaPrincipal extends javax.swing.JFrame {
 
     private DefaultTableModel modelo;
     private int idSelecionado;
 
-    public Principal() {
+    public JanelaPrincipal() {
         initComponents();
     }
 
@@ -284,7 +284,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuItem_TipoOcorrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_TipoOcorrenciaActionPerformed
-        new TiposOcorrencias(this, true).setVisible(true);
+        new JanelaTipos(this, true).setVisible(true);
     }//GEN-LAST:event_menuItem_TipoOcorrenciaActionPerformed
 
     private void menuItem_BairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_BairroActionPerformed
@@ -304,7 +304,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_table_OcorrenciasMouseClicked
 
     private void button_NovoOcorrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoOcorrenciaActionPerformed
-        new Ocorrencia(this, true).setVisible(true);
+        new JanelaOcorrencia(this, true).setVisible(true);
     }//GEN-LAST:event_button_NovoOcorrenciaActionPerformed
 
     private void button_ExcluirOcorrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirOcorrenciaActionPerformed
@@ -317,7 +317,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void button_NovoBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoBairroActionPerformed
         tabbedPane.setSelectedIndex(1);
-        new Bairro(this, true).setVisible(true);
+        new JanelaBairro(this, true).setVisible(true);
     }//GEN-LAST:event_button_NovoBairroActionPerformed
 
     private void table_BairrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_BairrosMouseClicked
@@ -331,17 +331,17 @@ public class Principal extends javax.swing.JFrame {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JanelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JanelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JanelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JanelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal().setVisible(true);
+                new JanelaPrincipal().setVisible(true);
             }
         });
     }

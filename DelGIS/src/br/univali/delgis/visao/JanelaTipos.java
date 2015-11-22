@@ -1,15 +1,15 @@
 package br.univali.delgis.visao;
 
-public class TiposOcorrencias extends javax.swing.JDialog {
+public class JanelaTipos extends javax.swing.JDialog {
 
     private int idSelecionado;
 
-    public TiposOcorrencias(java.awt.Frame parent, boolean modal) {
+    public JanelaTipos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
     
-    public TiposOcorrencias(java.awt.Dialog parent, boolean modal) {
+    public JanelaTipos(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -255,24 +255,6 @@ public class TiposOcorrencias extends javax.swing.JDialog {
 
     }//GEN-LAST:event_formWindowClosing
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                TiposOcorrencias dialog = new TiposOcorrencias(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_Confirmar;

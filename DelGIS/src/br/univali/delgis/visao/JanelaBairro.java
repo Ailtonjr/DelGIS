@@ -4,10 +4,10 @@ import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 
-public class Bairro extends javax.swing.JDialog {
+public class JanelaBairro extends javax.swing.JDialog {
     //private DefaultTableModel modelo;
 
-    public Bairro(java.awt.Frame parent, boolean modal) {
+    public JanelaBairro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -355,23 +355,6 @@ public class Bairro extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_button_SalvarActionPerformed
 
-
-    public static void main(String args[]) {
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Bairro dialog = new Bairro(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_EditarBairro;
