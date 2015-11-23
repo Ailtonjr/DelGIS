@@ -1,6 +1,9 @@
 
 package br.univali.delgis.visao;
 
+import br.univali.delgis.controle.ControladorOcorrencia;
+import br.univali.delgis.modelo.Ocorrencia;
+
 
 public class JanelaOcorrencia extends javax.swing.JDialog {
 
@@ -20,8 +23,8 @@ public class JanelaOcorrencia extends javax.swing.JDialog {
 
         panel_Principal = new javax.swing.JPanel();
         label_Descricao = new javax.swing.JLabel();
-        jScrollPane_Descricao = new javax.swing.JScrollPane();
-        jTextArea_Descricao = new javax.swing.JTextArea();
+        scrollPane_Descricao = new javax.swing.JScrollPane();
+        textArea_Descricao = new javax.swing.JTextArea();
         jLabel_Tipo = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         label_Long = new javax.swing.JLabel();
@@ -42,9 +45,9 @@ public class JanelaOcorrencia extends javax.swing.JDialog {
 
         label_Descricao.setText("Descrição");
 
-        jTextArea_Descricao.setColumns(20);
-        jTextArea_Descricao.setRows(5);
-        jScrollPane_Descricao.setViewportView(jTextArea_Descricao);
+        textArea_Descricao.setColumns(20);
+        textArea_Descricao.setRows(5);
+        scrollPane_Descricao.setViewportView(textArea_Descricao);
 
         jLabel_Tipo.setText("Tipo de Ocorrencia");
 
@@ -84,7 +87,7 @@ public class JanelaOcorrencia extends javax.swing.JDialog {
                             .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(label_Lat)
                                 .addComponent(field_Lat, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jScrollPane_Descricao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(scrollPane_Descricao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(button_Confirmar))
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -95,7 +98,7 @@ public class JanelaOcorrencia extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(label_Descricao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane_Descricao, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                .addComponent(scrollPane_Descricao, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel_Tipo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -135,7 +138,8 @@ public class JanelaOcorrencia extends javax.swing.JDialog {
 
 
     private void button_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConfirmarActionPerformed
-
+        ControladorOcorrencia controladorOcorrencia = new ControladorOcorrencia();
+        controladorOcorrencia.novaOcorrencia(textArea_Descricao.getText(), Double.parseDouble(field_Long.getText()), Double.parseDouble(field_Lat.getText()), 0);
     }//GEN-LAST:event_button_ConfirmarActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -149,11 +153,11 @@ public class JanelaOcorrencia extends javax.swing.JDialog {
     private javax.swing.JTextField field_Long;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel_Tipo;
-    private javax.swing.JScrollPane jScrollPane_Descricao;
-    private javax.swing.JTextArea jTextArea_Descricao;
     private javax.swing.JLabel label_Descricao;
     private javax.swing.JLabel label_Lat;
     private javax.swing.JLabel label_Long;
     private javax.swing.JPanel panel_Principal;
+    private javax.swing.JScrollPane scrollPane_Descricao;
+    private javax.swing.JTextArea textArea_Descricao;
     // End of variables declaration//GEN-END:variables
 }

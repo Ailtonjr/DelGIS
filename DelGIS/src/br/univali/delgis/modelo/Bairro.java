@@ -18,7 +18,6 @@ public class Bairro {
     }
     
     public Bairro(String nome, List<Ponto> coordenadas) {
-        this.id = id;
         this.nome = nome;
         this.coordenadas = coordenadas;
     }

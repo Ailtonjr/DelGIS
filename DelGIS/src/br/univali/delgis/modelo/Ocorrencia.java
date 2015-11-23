@@ -12,10 +12,10 @@ public class Ocorrencia {
     private String descricao;
     private double longitude;
     private double latitude;
-    private String id_tipo;
+    private int id_tipo;
     private Conexao con = new Conexao();
 
-    public Ocorrencia(int id,String descricao, double longitude, double latitude, String tipoOcorrencia) {
+    public Ocorrencia(int id,String descricao, double longitude, double latitude, int tipoOcorrencia) {
         this.id = id;
         this.descricao = descricao;
         this.longitude = longitude;
@@ -23,7 +23,7 @@ public class Ocorrencia {
         this.id_tipo = tipoOcorrencia;
     }
     
-    public Ocorrencia(String descricao, double longitude, double latitude, String tipoOcorrencia) {
+    public Ocorrencia(String descricao, double longitude, double latitude, int tipoOcorrencia) {
         this.descricao = descricao;
         this.longitude = longitude;
         this.latitude = latitude;
@@ -35,7 +35,7 @@ public class Ocorrencia {
     
     public void salvarBanco(){
         String sql = "BEGIN;"
-                + "INSERT INTO ocorrencia (descricao, id_tipo) VALUES (?, ?, st_geomfromtext(?, 4674), 0));"
+                + "INSERT INTO ocorrencia (descricao, id_tipo, coordenada) VALUES (?, ?, st_geomfromtext(?, 4674));"
                 + "COMMIT";
         
         String point = "POINT(" + longitude + " " + latitude + ")";
@@ -43,7 +43,7 @@ public class Ocorrencia {
         try {
             PreparedStatement statement = con.getConexao().prepareStatement(sql);
             statement.setString(1, descricao);
-            statement.setString(2, id_tipo);
+            statement.setInt(2, id_tipo);
             statement.setString(3, point);
             statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Ocorrencia cadastrada com sucesso!");
@@ -62,7 +62,7 @@ public class Ocorrencia {
         try {
             PreparedStatement statement = con.getConexao().prepareStatement(sql);
             statement.setString(1, descricao);
-            statement.setString(2, id_tipo);
+            statement.setInt(2, id_tipo);
             statement.setInt(3, id);
             statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Ocorrencia " + id + " atualizada com sucesso!");
@@ -129,11 +129,11 @@ public class Ocorrencia {
         this.latitude = latitude;
     }
 
-    public String getTipoOcorrencia() {
+    public int getTipoOcorrencia() {
         return id_tipo;
     }
 
-    public void setTipoOcorrencia(String tipoOcorrencia) {
+    public void setTipoOcorrencia(int tipoOcorrencia) {
         this.id_tipo = tipoOcorrencia;
     }
 }
