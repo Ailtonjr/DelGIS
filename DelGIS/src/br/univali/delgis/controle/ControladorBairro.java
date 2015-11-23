@@ -4,9 +4,7 @@ package br.univali.delgis.controle;
 import br.univali.delgis.modelo.Bairro;
 import br.univali.delgis.modelo.Conexao;
 import br.univali.delgis.modelo.Ponto;
-import java.sql.SQLException;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 
 public class ControladorBairro {
@@ -14,7 +12,7 @@ public class ControladorBairro {
     private Conexao con;
 
     public ControladorBairro() {
-        con = new Conexao(null, null, null);
+        con = new Conexao();
     }
     
     public void novoBairro(String nome, List<Ponto> poligono) {

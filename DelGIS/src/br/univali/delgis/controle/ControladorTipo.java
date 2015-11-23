@@ -7,8 +7,8 @@ import br.univali.delgis.modelo.Tipo;
 public class ControladorTipo {
     private Tipo tipo;
 
-    public ControladorTipo(String nome) {
-        // Controlador
+    public ControladorTipo() {
+        
     }
     
     public void novoTipo(String nome) {

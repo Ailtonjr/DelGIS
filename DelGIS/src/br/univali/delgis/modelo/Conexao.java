@@ -13,10 +13,10 @@ public class Conexao {
     private String senha;
     private Connection conexao;
 
-    public Conexao(String url, String usuario, String senha) {
-        this.url = url;
-        this.usuario = usuario;
-        this.senha = senha;
+    public Conexao() {
+        this.url = "jdbc:postgresql://localhost:5432/delgis";
+        this.usuario = "delgis";
+        this.senha = "12345";
         
         try {
             this.conexao = DriverManager.getConnection(url, usuario, senha);

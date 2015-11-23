@@ -13,6 +13,7 @@ public class Tipo {
 
     public Tipo(String nome) {
         this.nome = nome;
+        con = new Conexao();
     }
     
     public Tipo(String id, String nome) {
@@ -22,12 +23,12 @@ public class Tipo {
     
     public void salvarBanco() {
         String sql = "BEGIN;"
-                + "INSERT INTO tipo (nome) VALUES (?);"
+                + "INSERT INTO tipo_ocorrencia (nome) VALUES (?);"
                 + "COMMIT";
         
         try {
             PreparedStatement statement = con.getConexao().prepareStatement(sql);
-            statement.setString(1, nome);
+            statement.setString(1, this.nome);
             statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Tipo " + nome + " inserido com sucesso!");
         } catch (SQLException ex) {
