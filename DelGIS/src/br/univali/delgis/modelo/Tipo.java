@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class Tipo {
     private int id;
     private String nome;
-    private Conexao con = new Conexao();;
+    private Conexao con = new Conexao();
 
     public Tipo(String nome) {
         this.nome = nome;
