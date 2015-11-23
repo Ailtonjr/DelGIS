@@ -1,17 +1,48 @@
 
 package br.univali.delgis.modelo;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Bairro {
+    private int id;
     private String nome;
     private List<Ponto> coordenadas = new ArrayList();
 
-    public Bairro(String nome, List<Ponto> coordenadas) {
+    public Bairro(int id, String nome, List<Ponto> coordenadas) {
+        this.id = id;
         this.nome = nome;
         this.coordenadas = coordenadas;
+    }
+    
+    public Bairro(String nome, List<Ponto> coordenadas) {
+        this.id = id;
+        this.nome = nome;
+        this.coordenadas = coordenadas;
+    }
+
+    public Bairro() {
+    }
+    
+    
+    
+    public void salvarBanco(){
+        
+    }
+    
+    public void atualizaBanco(){
+        
+    }
+    
+    public void excluiBanco(){
+        
+    }
+    
+    public ResultSet buscaBairros(){
+        
+        return null;
     }
     
     public void inserePonto(double lon, double lat) {

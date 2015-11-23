@@ -9,15 +9,24 @@ import java.util.List;
 
 public class ControladorBairro {
     private Bairro bairro;
-    private Conexao con;
+    private Conexao con = new Conexao();
 
     public ControladorBairro() {
-        con = new Conexao();
     }
     
     public void novoBairro(String nome, List<Ponto> poligono) {
-        this.bairro = new Bairro(nome, poligono);
-        
+        bairro = new Bairro(nome, poligono);
+        bairro.salvarBanco();
+    }
+    
+    public void atualizarBairro(int id,String nome, List coordenadas){
+        bairro = new Bairro(id, nome, coordenadas);
+        bairro.atualizaBanco();
+    }
+    
+    public void excluirTipo(int id, String nome){
+        bairro = new Bairro(id, nome, null);
+        bairro.excluiBanco();
     }
     
 }
