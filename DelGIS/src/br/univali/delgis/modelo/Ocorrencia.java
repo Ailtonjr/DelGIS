@@ -36,7 +36,7 @@ public class Ocorrencia {
     
     public void salvarBanco(){
         String sql = "BEGIN;"
-                + "INSERT INTO ocorrencia (descricao, id_tipo) VALUES (?, ?, st_geomfromtext(?, 4674), 0));"
+                + "INSERT INTO ocorrencia (descricao, id_tipo, coordenada) VALUES (?, ?, st_geomfromtext(?, 4674));"
                 + "COMMIT";
         
         String point = "POINT(" + longitude + " " + latitude + ")";
@@ -57,14 +57,17 @@ public class Ocorrencia {
     
     public void atualizaBanco(){
         String sql = "BEGIN;"
-                + "UPDATE ocorrencia SET descricao = ?, id_tipo = ? WHERE id = ?"
+                + "UPDATE ocorrencia SET descricao = ?, id_tipo = ?, coordenada = ? WHERE id = ?"
                 + "COMMIT";
+        
+        String point = "POINT(" + longitude + " " + latitude + ")";
         
         try {
             PreparedStatement statement = con.getConexao().prepareStatement(sql);
             statement.setString(1, descricao);
             statement.setString(2, id_tipo);
-            statement.setInt(3, id);
+            statement.setString(3, point);
+            statement.setInt(4, id);
             statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Ocorrencia " + id + " atualizada com sucesso!");
         } catch (SQLException ex) {
@@ -92,7 +95,7 @@ public class Ocorrencia {
     }
     
     public ResultSet buscaOcorrencias(){
-        String sql = "SELECT * FROM ocorrencia";
+        String sql = "SELECT id, descricao, id_tipo, st_astext(coordenadas) FROM ocorrencia";
         ResultSet rs = null;
 
         try {
