@@ -16,6 +16,10 @@ public class Tipo {
     public Tipo(String nome) {
         this.nome = nome;
     }
+
+    public Tipo() {
+    }
+    
     
     public Tipo(int id, String nome) {
         this.id = id;
@@ -36,6 +40,7 @@ public class Tipo {
             JOptionPane.showMessageDialog(null, "Erro ao inserir tipo " + nome + ". Verifique se este tipo já não existente\n" + sql);
             ex.printStackTrace();
         }
+        con.encerrarConexao();
     }
     
     public void atualizaBanco() {
@@ -53,6 +58,7 @@ public class Tipo {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar tipo " + nome + ".\n" + sql);
             ex.printStackTrace();
         }
+        con.encerrarConexao();
     }
 
     public void excluiBanco() {
@@ -69,6 +75,7 @@ public class Tipo {
             JOptionPane.showMessageDialog(null, "Erro ao excluir tipo " + nome + ".\n" + sql);
             ex.printStackTrace();
         }
+        con.encerrarConexao();
     }
     
     public ResultSet buscaTipos() {
@@ -76,12 +83,13 @@ public class Tipo {
         ResultSet rs = null;
 
         try {
-            Statement statement = con.getConexao().prepareStatement(sql);
+            Statement statement = con.getConexao().createStatement();
             rs = statement.executeQuery(sql);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao buscar Tipos\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
+        con.encerrarConexao();
         return rs;
     }
     

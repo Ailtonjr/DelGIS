@@ -11,11 +11,7 @@ public class JanelaTipos extends javax.swing.JDialog {
     public JanelaTipos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-    }
-    
-    public JanelaTipos(java.awt.Dialog parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
+        atualizaTabela();
     }
 
     /**
@@ -33,8 +29,8 @@ public class JanelaTipos extends javax.swing.JDialog {
         button_Editar = new javax.swing.JButton();
         button_Confirmar = new javax.swing.JButton();
         button_Excluir = new javax.swing.JButton();
-        scrollPane_Categorias = new javax.swing.JScrollPane();
-        tabela_Categorias = new javax.swing.JTable();
+        scrollPane_Tipos = new javax.swing.JScrollPane();
+        tabela_Tipos = new javax.swing.JTable();
         label_Nome = new javax.swing.JLabel();
         field_Nome = new javax.swing.JTextField();
         separator = new javax.swing.JSeparator();
@@ -95,7 +91,7 @@ public class JanelaTipos extends javax.swing.JDialog {
             }
         });
 
-        tabela_Categorias.setModel(new javax.swing.table.DefaultTableModel(
+        tabela_Tipos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
                 {null},
@@ -121,15 +117,15 @@ public class JanelaTipos extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        tabela_Categorias.getTableHeader().setReorderingAllowed(false);
-        tabela_Categorias.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabela_Tipos.getTableHeader().setReorderingAllowed(false);
+        tabela_Tipos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabela_CategoriasMouseClicked(evt);
+                tabela_TiposMouseClicked(evt);
             }
         });
-        scrollPane_Categorias.setViewportView(tabela_Categorias);
-        if (tabela_Categorias.getColumnModel().getColumnCount() > 0) {
-            tabela_Categorias.getColumnModel().getColumn(0).setPreferredWidth(1);
+        scrollPane_Tipos.setViewportView(tabela_Tipos);
+        if (tabela_Tipos.getColumnModel().getColumnCount() > 0) {
+            tabela_Tipos.getColumnModel().getColumn(0).setPreferredWidth(1);
         }
 
         label_Nome.setText("Nome");
@@ -167,7 +163,7 @@ public class JanelaTipos extends javax.swing.JDialog {
                         .addComponent(label_Separador)
                         .addGap(14, 14, 14)
                         .addComponent(separator))
-                    .addComponent(scrollPane_Categorias, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(scrollPane_Tipos, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         panel_PrincipalLayout.setVerticalGroup(
             panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,7 +185,7 @@ public class JanelaTipos extends javax.swing.JDialog {
                         .addGap(10, 10, 10)
                         .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5)
-                .addComponent(scrollPane_Categorias, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(scrollPane_Tipos, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -211,7 +207,6 @@ public class JanelaTipos extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-
 // Confirmar e clique na tabela
     private void setaBotoesConfirmar() {
         button_Novo.setEnabled(true);
@@ -220,39 +215,52 @@ public class JanelaTipos extends javax.swing.JDialog {
         button_Confirmar.setEnabled(false);
         field_Nome.setEnabled(false);
     }
-    
-     private void setaBotoesEditar(){
+
+    private void setaBotoesEditar() {
         button_Novo.setEnabled(false);
         button_Editar.setEnabled(false);
         button_Excluir.setEnabled(false);
         button_Confirmar.setEnabled(true);
         field_Nome.setEnabled(true);
     }
-     
+
+    private void atualizaTabela() {
+        tabela_Tipos.setModel(controladorTipo.montaTabela());
+    }
+
     private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
-        controladorTipo.excluirTipo(3, "teta da fernanda");
+        controladorTipo.excluirTipo(idSelecionado, "");
+        operacao = "novo";
+        atualizaTabela();
         button_Novo.doClick();
     }//GEN-LAST:event_button_ExcluirActionPerformed
 
     private void button_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConfirmarActionPerformed
-        tabela_Categorias.setRowSelectionInterval(tabela_Categorias.getRowCount() - 1, tabela_Categorias.getRowCount() - 1);
+        if (operacao.equals("novo")) {
+            tabela_Tipos.setRowSelectionInterval(tabela_Tipos.getRowCount() - 1, tabela_Tipos.getRowCount() - 1);
+            controladorTipo.novoTipo(field_Nome.getText());
+        }else{
+            tabela_Tipos.setRowSelectionInterval(tabela_Tipos.getRowCount() - 1, tabela_Tipos.getRowCount() - 1);
+            controladorTipo.atualizarTipo(idSelecionado, field_Nome.getText());
+        }
         setaBotoesConfirmar();
-        controladorTipo.novoTipo(field_Nome.getText());
+        atualizaTabela();
     }//GEN-LAST:event_button_ConfirmarActionPerformed
 
     private void button_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarActionPerformed
-        //controladorTipo.atualizarTipo(3, "teta da fernada");
+        operacao = "editar";
         setaBotoesEditar();
     }//GEN-LAST:event_button_EditarActionPerformed
 
-    private void tabela_CategoriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabela_CategoriasMouseClicked
+    private void tabela_TiposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabela_TiposMouseClicked
         if (evt.getClickCount() == 1) {
-            //idSelecionado= Integer.parseInt((String) tabela_Categorias.getValueAt(tabela_Categorias.getSelectedRow(), 0));
+            idSelecionado = Integer.parseInt((String) tabela_Tipos.getValueAt(tabela_Tipos.getSelectedRow(), 0));
             setaBotoesConfirmar();
         }
-    }//GEN-LAST:event_tabela_CategoriasMouseClicked
+    }//GEN-LAST:event_tabela_TiposMouseClicked
 
     private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
+        operacao = "novo";
         setaBotoesEditar();
         field_Nome.setText("");
         button_Confirmar.transferFocus();
@@ -272,9 +280,9 @@ public class JanelaTipos extends javax.swing.JDialog {
     private javax.swing.JLabel label_Nome;
     private javax.swing.JLabel label_Separador;
     private javax.swing.JPanel panel_Principal;
-    private javax.swing.JScrollPane scrollPane_Categorias;
+    private javax.swing.JScrollPane scrollPane_Tipos;
     private javax.swing.JSeparator separator;
-    private javax.swing.JTable tabela_Categorias;
+    private javax.swing.JTable tabela_Tipos;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
