@@ -4,6 +4,7 @@ package br.univali.delgis.modelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 
@@ -47,13 +48,12 @@ public class Tipo {
             statement.setString(1, nome);
             statement.setInt(2, id);
             statement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Tipo " + nome + " inserido com sucesso!");
+            JOptionPane.showMessageDialog(null, "Tipo " + nome + " atualizado com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao inserir tipo " + nome + ". Verifique se este tipo já não existente\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar tipo " + nome + ".\n" + sql);
             ex.printStackTrace();
         }
     }
-
 
     public void excluiBanco() {
         String sql = "BEGIN;"
@@ -64,22 +64,22 @@ public class Tipo {
             PreparedStatement statement = con.getConexao().prepareStatement(sql);
             statement.setInt(1, id);
             statement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Tipo " + nome + " inserido com sucesso!");
+            JOptionPane.showMessageDialog(null, "Tipo " + nome + " excluido com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao inserir tipo " + nome + ". Verifique se este tipo já não existente\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao excluir tipo " + nome + ".\n" + sql);
             ex.printStackTrace();
         }
     }
     
     public ResultSet buscaTipos() {
-        String sql = "";
+        String sql = "SELECT * FROM tipo_ocorrencia";
         ResultSet rs = null;
 
         try {
-            PreparedStatement statement = con.getConexao().prepareStatement(sql);
+            Statement statement = con.getConexao().prepareStatement(sql);
             rs = statement.executeQuery(sql);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao buscar chamados\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro ao buscar Tipos\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
         return rs;
