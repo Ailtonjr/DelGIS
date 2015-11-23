@@ -2,7 +2,6 @@
 package br.univali.delgis.visao;
 
 import br.univali.delgis.controle.ControladorOcorrencia;
-import br.univali.delgis.modelo.Ocorrencia;
 
 
 public class JanelaOcorrencia extends javax.swing.JDialog {
@@ -140,6 +139,7 @@ public class JanelaOcorrencia extends javax.swing.JDialog {
     private void button_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConfirmarActionPerformed
         ControladorOcorrencia controladorOcorrencia = new ControladorOcorrencia();
         controladorOcorrencia.novaOcorrencia(textArea_Descricao.getText(), Double.parseDouble(field_Long.getText()), Double.parseDouble(field_Lat.getText()), 0);
+        this.dispose();
     }//GEN-LAST:event_button_ConfirmarActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing

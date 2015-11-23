@@ -30,8 +30,8 @@ public class ControladorOcorrencia {
         ocorrencia.atualizaBanco();
     }
     
-    public void excluirOcorrencia(int id,String descricao, double longitude, double latitude, int tipoOcorrencia){
-        ocorrencia = new Ocorrencia(id, descricao, longitude, latitude, tipoOcorrencia);
+    public void excluirOcorrencia(int id){
+        ocorrencia = new Ocorrencia(id);
         ocorrencia.excluiBanco();
     }
     
@@ -49,8 +49,7 @@ public class ControladorOcorrencia {
             String vetor[] = new String[4];
             modelo.addColumn("ID");
             modelo.addColumn("Descrição");
-            modelo.addColumn("Longitude");
-            modelo.addColumn("Latitude");
+            modelo.addColumn("Coordenadas");
             modelo.addColumn("Tipo");
 
             while (rs.next()) {

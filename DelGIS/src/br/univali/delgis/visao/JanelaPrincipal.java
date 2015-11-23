@@ -1,5 +1,6 @@
 package br.univali.delgis.visao;
 
+import br.univali.delgis.controle.ControladorOcorrencia;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -8,12 +9,19 @@ import javax.swing.table.DefaultTableModel;
 
 public class JanelaPrincipal extends javax.swing.JFrame {
 
+    ControladorOcorrencia ctrlOcorrencia = new ControladorOcorrencia();
     private DefaultTableModel modelo;
     private int idSelecionado;
 
     public JanelaPrincipal() {
         initComponents();
         this.setResizable(false);
+        atualizaTabelaOcorrencias();
+    }
+    
+    
+    public void atualizaTabelaOcorrencias(){
+        table_Ocorrencias.setModel(ctrlOcorrencia.montaTabela());
     }
 
     @SuppressWarnings("unchecked")
@@ -304,17 +312,20 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     private void table_OcorrenciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_OcorrenciasMouseClicked
         if (evt.getClickCount() == 1) {
-            //idSelecionado = Integer.parseInt((String) table_Ocorrencias.getValueAt(table_Ocorrencias.getSelectedRow(), 0));
+            idSelecionado = Integer.parseInt((String) table_Ocorrencias.getValueAt(table_Ocorrencias.getSelectedRow(), 0));
             button_ExcluirOcorrencia.setEnabled(true);
         }
     }//GEN-LAST:event_table_OcorrenciasMouseClicked
 
     private void button_NovoOcorrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoOcorrenciaActionPerformed
         new JanelaOcorrencia(this, true).setVisible(true);
+        atualizaTabelaOcorrencias();
     }//GEN-LAST:event_button_NovoOcorrenciaActionPerformed
 
     private void button_ExcluirOcorrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirOcorrenciaActionPerformed
+        ctrlOcorrencia.excluirOcorrencia(idSelecionado);
         button_ExcluirOcorrencia.setEnabled(false);
+        atualizaTabelaOcorrencias();
     }//GEN-LAST:event_button_ExcluirOcorrenciaActionPerformed
 
     private void button_ExcluirBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirBairroActionPerformed

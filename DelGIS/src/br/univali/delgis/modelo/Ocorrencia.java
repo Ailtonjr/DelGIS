@@ -29,6 +29,10 @@ public class Ocorrencia {
         this.latitude = latitude;
         this.id_tipo = tipoOcorrencia;
     }
+    
+    public Ocorrencia(int id) {
+        this.id = id;
+    }
 
     public Ocorrencia() {
     }
@@ -64,7 +68,7 @@ public class Ocorrencia {
         try {
             PreparedStatement statement = con.getConexao().prepareStatement(sql);
             statement.setString(1, descricao);
-            statement.setString(2, id_tipo);
+            statement.setInt(2, id_tipo);
             statement.setString(3, point);
             statement.setInt(4, id);
             statement.executeUpdate();
@@ -94,7 +98,7 @@ public class Ocorrencia {
     }
     
     public ResultSet buscaOcorrencias(){
-        String sql = "SELECT id, descricao, id_tipo, st_astext(coordenadas) FROM ocorrencia";
+        String sql = "SELECT o.id, o.descricao, st_astext(coordenada), t.nome FROM ocorrencia o Join tipo_ocorrencia t ON (o.id_tipo = t.id) ORDER BY o.id";
         ResultSet rs = null;
 
         try {

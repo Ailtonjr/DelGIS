@@ -4,7 +4,7 @@ import br.univali.delgis.controle.ControladorTipo;
 
 public class JanelaTipos extends javax.swing.JDialog {
 
-    ControladorTipo controladorTipo = new ControladorTipo();
+    ControladorTipo ctrlTipo = new ControladorTipo();
     private int idSelecionado;
     private String operacao = "novo";
 
@@ -225,11 +225,11 @@ public class JanelaTipos extends javax.swing.JDialog {
     }
 
     private void atualizaTabela() {
-        tabela_Tipos.setModel(controladorTipo.montaTabela());
+        tabela_Tipos.setModel(ctrlTipo.montaTabela());
     }
 
     private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
-        controladorTipo.excluirTipo(idSelecionado, "");
+        ctrlTipo.excluirTipo(idSelecionado, "");
         operacao = "novo";
         atualizaTabela();
         button_Novo.doClick();
@@ -238,10 +238,10 @@ public class JanelaTipos extends javax.swing.JDialog {
     private void button_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConfirmarActionPerformed
         if (operacao.equals("novo")) {
             tabela_Tipos.setRowSelectionInterval(tabela_Tipos.getRowCount() - 1, tabela_Tipos.getRowCount() - 1);
-            controladorTipo.novoTipo(field_Nome.getText());
+            ctrlTipo.novoTipo(field_Nome.getText());
         }else{
             tabela_Tipos.setRowSelectionInterval(tabela_Tipos.getRowCount() - 1, tabela_Tipos.getRowCount() - 1);
-            controladorTipo.atualizarTipo(idSelecionado, field_Nome.getText());
+            ctrlTipo.atualizarTipo(idSelecionado, field_Nome.getText());
         }
         setaBotoesConfirmar();
         atualizaTabela();
