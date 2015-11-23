@@ -22,9 +22,8 @@ public class Bairro {
         this.coordenadas = coordenadas;
     }
     
-    public Bairro(String nome, List<Ponto> coordenadas) {
+    public Bairro(String nome) {
         this.nome = nome;
-        this.coordenadas = coordenadas;
     }
 
     public Bairro() {
@@ -76,9 +75,9 @@ public class Bairro {
             PreparedStatement statement = con.getConexao().prepareStatement(sql);
             statement.setInt(1, id);
             statement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Bairro " + id + " excluido com sucesso!");
+            JOptionPane.showMessageDialog(null, "Bairro " + nome + " excluido com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao excluir bairro " + id + ".\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao excluir bairro " + nome + ".\n" + sql);
             ex.printStackTrace();
         }
         con.encerrarConexao();

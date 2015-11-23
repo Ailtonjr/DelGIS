@@ -1,5 +1,6 @@
 package br.univali.delgis.visao;
 
+import br.univali.delgis.controle.ControladorBairro;
 import br.univali.delgis.controle.ControladorOcorrencia;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -7,21 +8,29 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 
-public class JanelaPrincipal extends javax.swing.JFrame {
+public final class JanelaPrincipal extends javax.swing.JFrame {
 
     ControladorOcorrencia ctrlOcorrencia = new ControladorOcorrencia();
+    ControladorBairro ctrldorBairro = new ControladorBairro();
     private DefaultTableModel modelo;
-    private int idSelecionado;
+    private int idOcorrenciaSel;
+    private int idBairroSel;
+    private String nomeBairroSel;
 
     public JanelaPrincipal() {
         initComponents();
         this.setResizable(false);
         atualizaTabelaOcorrencias();
+        atualizaTabelaBairros();
     }
     
     
     public void atualizaTabelaOcorrencias(){
         table_Ocorrencias.setModel(ctrlOcorrencia.montaTabela());
+    }
+    
+    public void atualizaTabelaBairros(){
+        table_Bairros.setModel(ctrldorBairro.montaTabela());
     }
 
     @SuppressWarnings("unchecked")
@@ -312,7 +321,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     private void table_OcorrenciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_OcorrenciasMouseClicked
         if (evt.getClickCount() == 1) {
-            idSelecionado = Integer.parseInt((String) table_Ocorrencias.getValueAt(table_Ocorrencias.getSelectedRow(), 0));
+            idOcorrenciaSel = Integer.parseInt((String) table_Ocorrencias.getValueAt(table_Ocorrencias.getSelectedRow(), 0));
             button_ExcluirOcorrencia.setEnabled(true);
         }
     }//GEN-LAST:event_table_OcorrenciasMouseClicked
@@ -323,24 +332,27 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_button_NovoOcorrenciaActionPerformed
 
     private void button_ExcluirOcorrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirOcorrenciaActionPerformed
-        ctrlOcorrencia.excluirOcorrencia(idSelecionado);
+        ctrlOcorrencia.excluirOcorrencia(idOcorrenciaSel);
         button_ExcluirOcorrencia.setEnabled(false);
         atualizaTabelaOcorrencias();
     }//GEN-LAST:event_button_ExcluirOcorrenciaActionPerformed
 
     private void button_ExcluirBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirBairroActionPerformed
-        // TODO add your handling code here:
+        ctrldorBairro.excluirBairro(idBairroSel,nomeBairroSel);
+        atualizaTabelaBairros();
     }//GEN-LAST:event_button_ExcluirBairroActionPerformed
 
     private void button_NovoBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoBairroActionPerformed
         tabbedPane.setSelectedIndex(1);
         new JanelaBairro(this, true).setVisible(true);
+        atualizaTabelaBairros();
     }//GEN-LAST:event_button_NovoBairroActionPerformed
 
     private void table_BairrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_BairrosMouseClicked
         if (evt.getClickCount() == 1) {
-            //idSelecionado = Integer.parseInt((String) table_Ocorrencias.getValueAt(table_Ocorrencias.getSelectedRow(), 0));
-            button_ExcluirOcorrencia.setEnabled(true);
+            idBairroSel = Integer.parseInt((String) table_Bairros.getValueAt(table_Bairros.getSelectedRow(), 0));
+            nomeBairroSel = (String) table_Bairros.getValueAt(table_Bairros.getSelectedRow(), 1);
+            button_ExcluirBairro.setEnabled(true);
         }
     }//GEN-LAST:event_table_BairrosMouseClicked
 

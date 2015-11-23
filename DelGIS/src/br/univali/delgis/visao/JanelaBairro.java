@@ -1,12 +1,29 @@
 package br.univali.delgis.visao;
 
+import br.univali.delgis.controle.ControladorBairro;
+import javax.swing.table.DefaultTableModel;
+
 
 public class JanelaBairro extends javax.swing.JDialog {
-    //private DefaultTableModel modelo;
+    private DefaultTableModel modelo;
+    private int idSelecionado;
 
     public JanelaBairro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        criaModel();
+    }
+    
+    private void criaModel(){
+        modelo = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
+        };
+        modelo.addColumn("Longitude");
+        modelo.addColumn("Latitude");
+        table_Coordenadas.setModel(modelo);
     }
 
     /**
@@ -24,12 +41,10 @@ public class JanelaBairro extends javax.swing.JDialog {
         table_Coordenadas = new javax.swing.JTable();
         separator = new javax.swing.JSeparator();
         label_Separador = new javax.swing.JLabel();
-        button_Novo = new javax.swing.JButton();
         button_Excluir = new javax.swing.JButton();
         label_Separador1 = new javax.swing.JLabel();
         separator1 = new javax.swing.JSeparator();
         button_SalvarBairro = new javax.swing.JButton();
-        button_EditarBairro = new javax.swing.JButton();
         field_Nome = new javax.swing.JTextField();
         field_Long = new javax.swing.JTextField();
         field_Lat = new javax.swing.JTextField();
@@ -87,15 +102,6 @@ public class JanelaBairro extends javax.swing.JDialog {
         label_Separador.setForeground(new java.awt.Color(102, 102, 102));
         label_Separador.setText("Coordenadas");
 
-        button_Novo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        button_Novo.setText("Novo");
-        button_Novo.setEnabled(false);
-        button_Novo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_NovoActionPerformed(evt);
-            }
-        });
-
         button_Excluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Excluir.setText("Excluir");
         button_Excluir.setEnabled(false);
@@ -115,44 +121,17 @@ public class JanelaBairro extends javax.swing.JDialog {
 
         button_SalvarBairro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_SalvarBairro.setText("Salvar");
-        button_SalvarBairro.setEnabled(false);
         button_SalvarBairro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_SalvarBairroActionPerformed(evt);
             }
         });
 
-        button_EditarBairro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        button_EditarBairro.setText("Editar");
-        button_EditarBairro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_EditarBairroActionPerformed(evt);
-            }
-        });
-
         field_Nome.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        field_Nome.setEnabled(false);
-        field_Nome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field_NomeActionPerformed(evt);
-            }
-        });
 
         field_Long.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        field_Long.setEnabled(false);
-        field_Long.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field_LongActionPerformed(evt);
-            }
-        });
 
         field_Lat.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        field_Lat.setEnabled(false);
-        field_Lat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field_LatActionPerformed(evt);
-            }
-        });
 
         label_Long.setText("Longitude");
 
@@ -160,7 +139,6 @@ public class JanelaBairro extends javax.swing.JDialog {
 
         button_Salvar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Salvar.setText("Add");
-        button_Salvar.setEnabled(false);
         button_Salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_SalvarActionPerformed(evt);
@@ -172,52 +150,42 @@ public class JanelaBairro extends javax.swing.JDialog {
         panel_PrincipalLayout.setHorizontalGroup(
             panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(separator1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                            .addGap(2, 2, 2)
+                            .addComponent(label_Separador1))
+                        .addComponent(label_Nome)
+                        .addComponent(field_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_PrincipalLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(separator1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                                    .addGap(2, 2, 2)
-                                    .addComponent(label_Separador1))
-                                .addComponent(label_Nome)
-                                .addComponent(field_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                                            .addGap(101, 101, 101)
-                                            .addComponent(button_Novo)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(button_Excluir)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(button_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                                            .addComponent(label_Separador)
-                                            .addGap(14, 14, 14)
-                                            .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                    .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_PrincipalLayout.createSequentialGroup()
-                            .addGap(160, 160, 160)
-                            .addComponent(button_EditarBairro)
-                            .addGap(26, 26, 26)
-                            .addComponent(button_SalvarBairro)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(label_Long)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(field_Lat, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label_Lat)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_PrincipalLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(scrollPane_Coordenadas)))
+                        .addComponent(label_Separador)
+                        .addGap(14, 14, 14)
+                        .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(scrollPane_Coordenadas)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PrincipalLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(button_SalvarBairro))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PrincipalLayout.createSequentialGroup()
+                        .addComponent(label_Long)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(label_Lat)
+                        .addGap(171, 171, 171))
                     .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(field_Long, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(319, 319, 319))
+                        .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(field_Long, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(field_Lat, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_Excluir))))
+                .addContainerGap())
         );
         panel_PrincipalLayout.setVerticalGroup(
             panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,10 +201,6 @@ public class JanelaBairro extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(field_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(button_EditarBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button_SalvarBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
                 .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label_Separador)
                     .addGroup(panel_PrincipalLayout.createSequentialGroup()
@@ -244,21 +208,21 @@ public class JanelaBairro extends javax.swing.JDialog {
                         .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                        .addComponent(label_Long)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(field_Long, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(field_Lat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(button_Novo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(button_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(button_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(label_Lat))
+                    .addComponent(label_Lat)
+                    .addComponent(label_Long))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(field_Long, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(field_Lat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(scrollPane_Coordenadas, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                .addGap(17, 17, 17))
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(button_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 21, Short.MAX_VALUE)
+                .addComponent(scrollPane_Coordenadas, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(button_SalvarBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -281,82 +245,39 @@ public class JanelaBairro extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void setarBotoesNovo() {
-        field_Lat.setEnabled(true);
-        field_Long.setEnabled(true);
-        button_Novo.setEnabled(false);
-        button_Excluir.setEnabled(false);
-        button_Salvar.setEnabled(true);
-    }
-
-    private void setarBotoesExcuir() {
-        button_Excluir.setEnabled(false);
-        field_Lat.setEnabled(false);
-        field_Long.setEnabled(false);
-    }
-
-    private void setarBotoesEditarBairro() {
-        field_Nome.setEnabled(true);
-        button_Novo.setEnabled(true);
-        button_SalvarBairro.setEnabled(true);
-        button_EditarBairro.setEnabled(false);
-    }
-
-    private void setarBotoesSalvarBairro() {
-        field_Nome.setEnabled(false);
-        button_Novo.setEnabled(false);
-        button_SalvarBairro.setEnabled(false);
-        button_EditarBairro.setEnabled(true);
-    }
-
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
 
     }//GEN-LAST:event_formWindowClosing
 
-    private void field_NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_NomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_field_NomeActionPerformed
-
-    private void button_EditarBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarBairroActionPerformed
-        setarBotoesEditarBairro();
-    }//GEN-LAST:event_button_EditarBairroActionPerformed
-
     private void button_SalvarBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_SalvarBairroActionPerformed
-        setarBotoesSalvarBairro();
+        ControladorBairro ctrlBairro = new ControladorBairro();   
+        ctrlBairro.novoBairro(field_Nome.getText(), modelo);
     }//GEN-LAST:event_button_SalvarBairroActionPerformed
 
     private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
-        setarBotoesExcuir();
+        modelo.removeRow(idSelecionado);
+        table_Coordenadas.setModel(modelo);
+        button_Excluir.setEnabled(false);
     }//GEN-LAST:event_button_ExcluirActionPerformed
 
-    private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
-        setarBotoesNovo();
-    }//GEN-LAST:event_button_NovoActionPerformed
-
     private void table_CoordenadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_CoordenadasMouseClicked
-//        if (evt.getClickCount() == 1) {
-//            idSelecionado = Integer.parseInt((String) table_Topicos.getValueAt(table_Topicos.getSelectedRow(), 0));
-//            setarBotoesConfirmar();
-//        }
+        if (evt.getClickCount() == 1) {
+            idSelecionado = table_Coordenadas.getSelectedRow();
+            System.out.println(idSelecionado);
+            button_Excluir.setEnabled(true);
+        }
     }//GEN-LAST:event_table_CoordenadasMouseClicked
 
-    private void field_LongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_LongActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_field_LongActionPerformed
-
-    private void field_LatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_LatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_field_LatActionPerformed
-
     private void button_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_SalvarActionPerformed
-        // TODO add your handling code here:
+        String vetor[] = new String[2];
+        vetor[0] = field_Long.getText();
+        vetor[1] = field_Lat.getText();
+        modelo.addRow(vetor);
     }//GEN-LAST:event_button_SalvarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton button_EditarBairro;
     private javax.swing.JButton button_Excluir;
-    private javax.swing.JButton button_Novo;
     private javax.swing.JButton button_Salvar;
     private javax.swing.JButton button_SalvarBairro;
     private javax.swing.JTextField field_Lat;
