@@ -230,6 +230,7 @@ public class JanelaTipos extends javax.swing.JDialog {
     }
      
     private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
+        controladorTipo.excluirTipo(3, "teta da fernanda");
         button_Novo.doClick();
     }//GEN-LAST:event_button_ExcluirActionPerformed
 
@@ -240,7 +241,7 @@ public class JanelaTipos extends javax.swing.JDialog {
     }//GEN-LAST:event_button_ConfirmarActionPerformed
 
     private void button_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarActionPerformed
-        controladorTipo.atualizarTipo(3, "teta");
+        //controladorTipo.atualizarTipo(3, "teta da fernada");
         setaBotoesEditar();
     }//GEN-LAST:event_button_EditarActionPerformed
 

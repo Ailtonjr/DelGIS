@@ -20,4 +20,9 @@ public class ControladorTipo {
         tipo = new Tipo(id,nome);
         tipo.atualizaBanco();
     }
+    
+    public void excluirTipo(int id, String nome) {
+        tipo = new Tipo(id,nome);
+        tipo.excluiBanco();
+    }
 }
