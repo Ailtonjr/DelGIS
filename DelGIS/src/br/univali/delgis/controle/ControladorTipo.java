@@ -4,8 +4,6 @@ package br.univali.delgis.controle;
 import br.univali.delgis.modelo.Tipo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -47,7 +45,7 @@ public class ControladorTipo {
             modelo.addColumn("Nome");
 
             while (rs.next()) {
-                for (int i = 1; i <= 2; i++) {
+                for (int i = 1; i <= vetor.length; i++) {
                     vetor[i - 1] = rs.getString(i);
                 }
                 modelo.addRow(vetor);

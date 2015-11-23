@@ -4,7 +4,6 @@ package br.univali.delgis.modelo;
 import java.sql.ResultSet;
 import java.util.List;
 
-
 public class Ocorrencia {
     private int id;
     private String descricao;
