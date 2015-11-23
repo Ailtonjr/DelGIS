@@ -4,7 +4,9 @@ import br.univali.delgis.controle.ControladorTipo;
 
 public class JanelaTipos extends javax.swing.JDialog {
 
+    ControladorTipo controladorTipo = new ControladorTipo();
     private int idSelecionado;
+    private String operacao = "novo";
 
     public JanelaTipos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -234,11 +236,11 @@ public class JanelaTipos extends javax.swing.JDialog {
     private void button_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConfirmarActionPerformed
         tabela_Categorias.setRowSelectionInterval(tabela_Categorias.getRowCount() - 1, tabela_Categorias.getRowCount() - 1);
         setaBotoesConfirmar();
-        ControladorTipo controladorTipo = new ControladorTipo();
         controladorTipo.novoTipo(field_Nome.getText());
     }//GEN-LAST:event_button_ConfirmarActionPerformed
 
     private void button_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarActionPerformed
+        controladorTipo.atualizarTipo(3, "teta");
         setaBotoesEditar();
     }//GEN-LAST:event_button_EditarActionPerformed
 

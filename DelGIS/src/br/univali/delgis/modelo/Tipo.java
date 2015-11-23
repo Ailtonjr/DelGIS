@@ -7,16 +7,15 @@ import javax.swing.JOptionPane;
 
 
 public class Tipo {
-    private String id;
+    private int id;
     private String nome;
-    private Conexao con;
+    private Conexao con = new Conexao();;
 
     public Tipo(String nome) {
         this.nome = nome;
-        con = new Conexao();
     }
     
-    public Tipo(String id, String nome) {
+    public Tipo(int id, String nome) {
         this.id = id;
         this.nome = nome;
     }
@@ -39,13 +38,13 @@ public class Tipo {
     
     public void atualizaBanco() {
         String sql = "BEGIN;"
-                + "UPDATE tipo SET nome = ? WHERE id = ?;"
+                + "UPDATE tipo_ocorrencia SET nome = ? WHERE id = ?;"
                 + "COMMIT";
         
         try {
             PreparedStatement statement = con.getConexao().prepareStatement(sql);
             statement.setString(1, nome);
-            statement.setString(2, id);
+            statement.setInt(2, id);
             statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Tipo " + nome + " inserido com sucesso!");
         } catch (SQLException ex) {
@@ -54,11 +53,11 @@ public class Tipo {
         }
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

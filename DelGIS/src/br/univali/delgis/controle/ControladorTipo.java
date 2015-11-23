@@ -17,7 +17,7 @@ public class ControladorTipo {
     }
     
     public void atualizarTipo(int id, String nome) {
-        tipo = new Tipo(nome);
+        tipo = new Tipo(id,nome);
         tipo.atualizaBanco();
     }
 }
