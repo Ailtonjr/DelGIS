@@ -4,11 +4,12 @@ package br.univali.delgis.modelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 
 public class Tipo {
-    private String id;
+    private int id;
     private String nome;
     private Conexao con;
 
@@ -16,7 +17,7 @@ public class Tipo {
         this.nome = nome;
     }
     
-    public Tipo(String id, String nome) {
+    public Tipo(int id, String nome) {
         this.id = id;
         this.nome = nome;
     }
@@ -45,11 +46,11 @@ public class Tipo {
         try {
             PreparedStatement statement = con.getConexao().prepareStatement(sql);
             statement.setString(1, nome);
-            statement.setString(2, id);
+            statement.setInt(2, id);
             statement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Tipo " + nome + " inserido com sucesso!");
+            JOptionPane.showMessageDialog(null, "Tipo " + nome + " atualizado com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao inserir tipo " + nome + ". Verifique se este tipo já não existente\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar tipo " + nome + ".\n" + sql);
             ex.printStackTrace();
         }
     }
@@ -61,34 +62,34 @@ public class Tipo {
         
         try {
             PreparedStatement statement = con.getConexao().prepareStatement(sql);
-            statement.setString(1, id);
+            statement.setInt(1, id);
             statement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Tipo " + nome + " inserido com sucesso!");
+            JOptionPane.showMessageDialog(null, "Tipo " + nome + " excluido com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao inserir tipo " + nome + ". Verifique se este tipo já não existente\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao excluir tipo " + nome + ".\n" + sql);
             ex.printStackTrace();
         }
     }
     
     public ResultSet buscaTipos() {
-        String sql = "";
+        String sql = "SELECT * FROM tipo_ocorrencia";
         ResultSet rs = null;
 
         try {
-            PreparedStatement statement = con.getConexao().prepareStatement(sql);
+            Statement statement = con.getConexao().prepareStatement(sql);
             rs = statement.executeQuery(sql);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao buscar chamados\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro ao buscar Tipos\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
         return rs;
     }
     
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
