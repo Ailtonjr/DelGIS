@@ -39,3 +39,7 @@ INSERT INTO ocorrencia (descricao, coordenada, id_tipo) VALUES ('Local 1', st_ge
 
 -- Traz a cordenada transformada
 SELECT st_astext(coordenadas) FROM bairro;
+
+-- Verifica interseção
+SELECT nome, count(o.id), st_askml(coordenadas) FROM bairro LEFT JOIN ocorrencia o ON st_within(o.coordenada, coordenadas) GROUP BY nome, coordenadas ORDER BY nome;
+

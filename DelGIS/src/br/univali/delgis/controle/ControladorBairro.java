@@ -9,7 +9,6 @@ import java.util.List;
 
 public class ControladorBairro {
     private Bairro bairro;
-    private Conexao con = new Conexao();
 
     public ControladorBairro() {
     }
