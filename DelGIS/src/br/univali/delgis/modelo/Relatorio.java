@@ -1,24 +1,40 @@
 
 package br.univali.delgis.modelo;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-public class KML {
+public class Relatorio {
     private String kml;
     private String descricao;
-    private Conexao con;
+    private Conexao con = new Conexao();
+    private FileWriter fw;
+    private BufferedWriter bw;
     
     private final String ZERO_OCORRENCIAS   = "#poly-0000FF-3-0-nodesc";
     private final String CINCO_OCORRENCIAS  = "#poly-0000FF-2-50-nodesc";
     private final String DEZ_OCORRENCIAS    = "#poly-0000FF-2-132-nodesc";
     private final String VINTE_OCORRENCIAS  = "#poly-0000FF-2-255-nodesc";
 
-    public KML(String nome) {
-        con = new Conexao();
+    public Relatorio() {     
         
+    }
+    
+    public void novoRelatorio() {
+        try {
+            fw = new FileWriter("DelGIS_Relatorio.txt");
+            bw = new BufferedWriter(fw);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao salvar arquivo KML", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void novoKML(String nome) {
         kml = "<?xml version='1.0' encoding='UTF-8'?>\n" +
 "<kml xmlns='http://www.opengis.net/kml/2.2'>\n" +
 "	<Document>\n" +
@@ -29,38 +45,37 @@ public class KML {
     }
     
     public void adicionarBairro(String nomeBairro, int ocorrencias, String polygon) {
-        switch(ocorrencias) {
-            case 0:
-                kml += "<Placemark>\n" +
-"				<name>" + nomeBairro + "</name>\n" +
-"				<styleUrl>" + ZERO_OCORRENCIAS + "</styleUrl>\n" +
-"				<ExtendedData>\n" +
-"				</ExtendedData>" + polygon + "</Placemark>";
-                break;
+        
+        if (ocorrencias == 0) {
+            kml += "<Placemark>\n" +
+"                       <name>" + nomeBairro + "</name>\n" +
+"			<styleUrl>" + ZERO_OCORRENCIAS + "</styleUrl>\n" +
+"			<ExtendedData>\n" +
+"			</ExtendedData>" + polygon + "</Placemark>";
+        }
                 
-            case 5:
-                kml += "<Placemark>\n" +
-"				<name>" + nomeBairro + "</name>\n" +
-"				<styleUrl>" + CINCO_OCORRENCIAS + "</styleUrl>\n" +
-"				<ExtendedData>\n" +
-"				</ExtendedData>" + polygon + "</Placemark>";
-                break;
+        if (ocorrencias > 0 && ocorrencias <= 5) {
+            kml += "<Placemark>\n" +
+"			<name>" + nomeBairro + "</name>\n" +
+"			<styleUrl>" + CINCO_OCORRENCIAS + "</styleUrl>\n" +
+"			<ExtendedData>\n" +
+"			</ExtendedData>" + polygon + "</Placemark>";
+        }
                 
-            case 10:
-                kml += "<Placemark>\n" +
-"				<name>" + nomeBairro + "</name>\n" +
-"				<styleUrl>" + DEZ_OCORRENCIAS + "</styleUrl>\n" +
-"				<ExtendedData>\n" +
-"				</ExtendedData>" + polygon + "</Placemark>";
-                break;
+        if (ocorrencias > 5 && ocorrencias <= 10) {
+            kml += "<Placemark>\n" +
+"			<name>" + nomeBairro + "</name>\n" +
+"			<styleUrl>" + DEZ_OCORRENCIAS + "</styleUrl>\n" +
+"			<ExtendedData>\n" +
+"			</ExtendedData>" + polygon + "</Placemark>";
+        }
                 
-            case 20:
-                kml += "<Placemark>\n" +
-"				<name>" + nomeBairro + "</name>\n" +
-"				<styleUrl>" + VINTE_OCORRENCIAS + "</styleUrl>\n" +
-"				<ExtendedData>\n" +
-"				</ExtendedData>" + polygon + "</Placemark>";
-                break;
+        if (ocorrencias > 10) {
+            kml += "<Placemark>\n" +
+"			<name>" + nomeBairro + "</name>\n" +
+"			<styleUrl>" + VINTE_OCORRENCIAS + "</styleUrl>\n" +
+"			<ExtendedData>\n" +
+"			</ExtendedData>" + polygon + "</Placemark>";
         }
     }
     
@@ -220,6 +235,17 @@ public class KML {
 "		</StyleMap>\n" +
 "	</Document>\n" +
 "</kml>";
+        
+        try {
+            fw = new FileWriter("DelGIS.kml");
+            bw = new BufferedWriter(fw);
+            
+            bw.append(kml);
+            bw.close();
+            fw.close();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao salvar arquivo KML", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     public ResultSet consultaIntercecoes() {
@@ -236,4 +262,23 @@ public class KML {
         con.encerrarConexao();
         return rs;
     }
+
+    
+    public FileWriter getFw() {
+        return fw;
+    }
+
+    public void setFw(FileWriter fw) {
+        this.fw = fw;
+    }
+
+    public BufferedWriter getBw() {
+        return bw;
+    }
+
+    public void setBw(BufferedWriter bw) {
+        this.bw = bw;
+    }
+
+    
 }
