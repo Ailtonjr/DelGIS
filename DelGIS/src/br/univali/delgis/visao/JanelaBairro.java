@@ -1,9 +1,12 @@
 package br.univali.delgis.visao;
 
 import br.univali.delgis.controle.ControladorBairro;
+import static com.sun.corba.se.impl.util.Utility.printStackTrace;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class JanelaBairro extends javax.swing.JDialog {
+
     private DefaultTableModel modelo;
     private int idSelecionado;
 
@@ -12,8 +15,8 @@ public class JanelaBairro extends javax.swing.JDialog {
         initComponents();
         criaModel();
     }
-    
-    private void criaModel(){
+
+    private void criaModel() {
         modelo = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int col) {
@@ -138,6 +141,7 @@ public class JanelaBairro extends javax.swing.JDialog {
 
         button_Salvar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Salvar.setText("Add");
+        button_Salvar.setNextFocusableComponent(field_Long);
         button_Salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_SalvarActionPerformed(evt);
@@ -249,7 +253,7 @@ public class JanelaBairro extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowClosing
 
     private void button_SalvarBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_SalvarBairroActionPerformed
-        ControladorBairro ctrlBairro = new ControladorBairro();   
+        ControladorBairro ctrlBairro = new ControladorBairro();
         ctrlBairro.novoBairro(field_Nome.getText(), modelo);
     }//GEN-LAST:event_button_SalvarBairroActionPerformed
 
@@ -269,9 +273,18 @@ public class JanelaBairro extends javax.swing.JDialog {
 
     private void button_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_SalvarActionPerformed
         String vetor[] = new String[2];
-        vetor[0] = field_Long.getText();
-        vetor[1] = field_Lat.getText();
-        modelo.addRow(vetor);
+        try {
+            vetor[0] = "" + Double.parseDouble(field_Long.getText());
+            vetor[1] = "" + Double.parseDouble(field_Lat.getText());
+            modelo.addRow(vetor);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Digite apenas numeros e use ponto para separar casas decimais");
+            e.printStackTrace();
+        }
+        field_Long.setText("");
+        field_Lat.setText("");
+        button_Salvar.transferFocus();
     }//GEN-LAST:event_button_SalvarActionPerformed
 
 
