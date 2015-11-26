@@ -12,17 +12,14 @@ import javax.swing.JOptionPane;
 public class Relatorio {
     private String kml;
     private String descricao;
-    private Conexao con = new Conexao();
+    private Conexao con;
     private FileWriter fw;
     private BufferedWriter bw;
-    
-    private final String ZERO_OCORRENCIAS   = "#poly-0000FF-3-0-nodesc";
-    private final String CINCO_OCORRENCIAS  = "#poly-0000FF-2-50-nodesc";
-    private final String DEZ_OCORRENCIAS    = "#poly-0000FF-2-132-nodesc";
-    private final String VINTE_OCORRENCIAS  = "#poly-0000FF-2-255-nodesc";
+    private int totalOcorrencias = 0;
 
-    public Relatorio() {     
-        
+    public Relatorio() {
+        con = new Conexao();
+        defineOcorrenciasTotais();
     }
     
     public void novoRelatorio() {
@@ -46,37 +43,13 @@ public class Relatorio {
     
     public void adicionarBairro(String nomeBairro, int ocorrencias, String polygon) {
         
-        if (ocorrencias == 0) {
-            kml += "<Placemark>\n" +
-"                       <name>" + nomeBairro + "</name>\n" +
-"			<styleUrl>" + ZERO_OCORRENCIAS + "</styleUrl>\n" +
-"			<ExtendedData>\n" +
-"			</ExtendedData>" + polygon + "</Placemark>";
-        }
-                
-        if (ocorrencias > 0 && ocorrencias <= 5) {
-            kml += "<Placemark>\n" +
-"			<name>" + nomeBairro + "</name>\n" +
-"			<styleUrl>" + CINCO_OCORRENCIAS + "</styleUrl>\n" +
-"			<ExtendedData>\n" +
-"			</ExtendedData>" + polygon + "</Placemark>";
-        }
-                
-        if (ocorrencias > 5 && ocorrencias <= 10) {
-            kml += "<Placemark>\n" +
-"			<name>" + nomeBairro + "</name>\n" +
-"			<styleUrl>" + DEZ_OCORRENCIAS + "</styleUrl>\n" +
-"			<ExtendedData>\n" +
-"			</ExtendedData>" + polygon + "</Placemark>";
-        }
-                
-        if (ocorrencias > 10) {
-            kml += "<Placemark>\n" +
-"			<name>" + nomeBairro + "</name>\n" +
-"			<styleUrl>" + VINTE_OCORRENCIAS + "</styleUrl>\n" +
-"			<ExtendedData>\n" +
-"			</ExtendedData>" + polygon + "</Placemark>";
-        }
+        int pigmentacao = (255 * ocorrencias) / totalOcorrencias;   // 255 é o limite da pigmentacao
+        
+        kml += "<Placemark>\n" +
+"           <name>" + nomeBairro + "</name>\n" +
+"           <styleUrl>#poly-0000FF-2-" + pigmentacao + "-nodesc</styleUrl>\n" +
+"           <ExtendedData>\n" +
+"           </ExtendedData>" + polygon + "</Placemark>";
     }
     
     public void finalizaKML() {
@@ -249,7 +222,7 @@ public class Relatorio {
     }
 
     public ResultSet consultaIntercecoes() {
-        String sql = "SELECT nome, count(o.id), st_askml(coordenadas) FROM bairro LEFT JOIN ocorrencia o ON st_within(o.coordenada, coordenadas) GROUP BY nome, coordenadas ORDER BY nome;";
+        String sql = "SELECT ocorrencias_por_bairro";
         ResultSet rs = null;
 
         try {
@@ -262,7 +235,22 @@ public class Relatorio {
         con.encerrarConexao();
         return rs;
     }
-
+    
+    private void defineOcorrenciasTotais() {
+        String sql = "SELECT sum(qtd) FROM ocorrencias_por_bairro;";
+        ResultSet rs = null;
+        
+        try {
+            Statement statement = con.getConexao().createStatement();
+            rs = statement.executeQuery(sql);
+            rs.next();
+            totalOcorrencias = rs.getInt(1);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao analisar intersecoes\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        con.encerrarConexao();
+    }
     
     public FileWriter getFw() {
         return fw;
