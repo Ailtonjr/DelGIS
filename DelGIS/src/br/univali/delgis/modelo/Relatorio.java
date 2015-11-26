@@ -222,7 +222,7 @@ public class Relatorio {
     }
 
     public ResultSet consultaIntercecoes() {
-        String sql = "SELECT ocorrencias_por_bairro";
+        String sql = "SELECT * from ocorrencias_por_bairro;";
         ResultSet rs = null;
 
         try {
@@ -244,12 +244,14 @@ public class Relatorio {
             Statement statement = con.getConexao().createStatement();
             rs = statement.executeQuery(sql);
             rs.next();
+            
             totalOcorrencias = rs.getInt(1);
+            System.out.println("teste");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao analisar intersecoes\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
-        con.encerrarConexao();
+        //con.encerrarConexao();
     }
     
     public FileWriter getFw() {
