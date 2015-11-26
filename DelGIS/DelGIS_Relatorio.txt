@@ -1,0 +1,5 @@
+abacate		0
+Gideões		1
+t		0
+te		0
+teste		0

@@ -2,6 +2,7 @@ package br.univali.delgis.visao;
 
 import br.univali.delgis.controle.ControladorBairro;
 import br.univali.delgis.controle.ControladorOcorrencia;
+import br.univali.delgis.controle.ControleRelatorio;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -267,6 +268,11 @@ public final class JanelaPrincipal extends javax.swing.JFrame {
         menu_Relatorio.setText("Relatórios");
 
         menuItem_Relatorio.setText("Ocorrências por Bairro");
+        menuItem_Relatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem_RelatorioActionPerformed(evt);
+            }
+        });
         menu_Relatorio.add(menuItem_Relatorio);
 
         menuBar.add(menu_Relatorio);
@@ -358,6 +364,12 @@ public final class JanelaPrincipal extends javax.swing.JFrame {
     private void menu_SobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_SobreMouseClicked
         new JanelaSobre().setVisible(true);
     }//GEN-LAST:event_menu_SobreMouseClicked
+
+    private void menuItem_RelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_RelatorioActionPerformed
+        ControleRelatorio ctrlRelatorio = new ControleRelatorio();
+        ctrlRelatorio.novoRelatorio();
+        //ctrlRelatorio.novoKML();
+    }//GEN-LAST:event_menuItem_RelatorioActionPerformed
 
     public static void main(String args[]) {
         try {

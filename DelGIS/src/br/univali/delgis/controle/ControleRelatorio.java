@@ -19,10 +19,11 @@ public class ControleRelatorio {
     public void novoRelatorio() {
         kml.novoRelatorio();
         ResultSet rs = kml.consultaIntercecoes();
+        String newLine = System.getProperty("line.separator");  
         
         try {
             while (rs.next()) {
-                kml.getBw().append(rs.getString(1) + "\t" + rs.getString(2) + "\n");
+                kml.getBw().append(rs.getString(1) + "\t\t" + rs.getString(2) + newLine);
             }
             kml.getBw().close();
             kml.getFw().close();
