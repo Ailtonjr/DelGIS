@@ -1,4 +1,3 @@
-
 package br.univali.delgis.modelo;
 
 public class Ponto {

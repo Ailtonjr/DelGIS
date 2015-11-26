@@ -24,7 +24,6 @@ public final class JanelaPrincipal extends javax.swing.JFrame {
         atualizaTabelaBairros();
     }
     
-    
     public void atualizaTabelaOcorrencias(){
         table_Ocorrencias.setModel(ctrlOcorrencia.montaTabela());
     }

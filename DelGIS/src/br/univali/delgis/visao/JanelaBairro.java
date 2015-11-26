@@ -3,7 +3,6 @@ package br.univali.delgis.visao;
 import br.univali.delgis.controle.ControladorBairro;
 import javax.swing.table.DefaultTableModel;
 
-
 public class JanelaBairro extends javax.swing.JDialog {
     private DefaultTableModel modelo;
     private int idSelecionado;
@@ -215,7 +214,7 @@ public class JanelaBairro extends javax.swing.JDialog {
                     .addComponent(field_Long, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(field_Lat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(button_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(button_Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 21, Short.MAX_VALUE)

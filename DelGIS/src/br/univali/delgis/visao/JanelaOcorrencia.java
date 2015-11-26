@@ -1,8 +1,6 @@
-
 package br.univali.delgis.visao;
 
 import br.univali.delgis.controle.ControladorOcorrencia;
-
 
 public class JanelaOcorrencia extends javax.swing.JDialog {
 

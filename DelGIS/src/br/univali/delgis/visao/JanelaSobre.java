@@ -1,4 +1,3 @@
-
 package br.univali.delgis.visao;
 
 import javax.swing.ImageIcon;
