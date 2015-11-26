@@ -23,6 +23,9 @@ ALTER TABLE ocorrencia ADD PRIMARY KEY(id);
 
 ALTER TABLE ocorrencia ADD FOREIGN KEY (id_tipo) REFERENCES tipo_ocorrencia(id) ON DELETE CASCADE;
 
+CREATE VIEW ocorrencias_por_bairro AS
+SELECT nome, count(o.id) as qtd, st_askml(coordenadas) FROM bairro LEFT JOIN ocorrencia o ON st_within(o.coordenada, coordenadas) GROUP BY nome, coordenadas ORDER BY nome;
+
 -- SIRGAS 2000 datum 4674
 SELECT AddGeometryColumn ('public', 'bairro', 'coordenadas', 4674, 'POLYGON', 2);
 SELECT AddGeometryColumn ('public', 'ocorrencia', 'coordenada', 4674, 'POINT', 2);
