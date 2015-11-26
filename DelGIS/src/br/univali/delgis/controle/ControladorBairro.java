@@ -12,7 +12,6 @@ import javax.swing.table.DefaultTableModel;
 public class ControladorBairro {
 
     private Bairro bairro;
-    private Conexao con = new Conexao();
 
     public ControladorBairro() {
     }
