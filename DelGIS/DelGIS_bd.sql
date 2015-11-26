@@ -1,3 +1,7 @@
+-- user: delgis
+-- password: 12345
+
+GRANT ALL ON ALL TABLES IN SCHEMA public TO delgis;
 
 CREATE EXTENSION postgis;
 
