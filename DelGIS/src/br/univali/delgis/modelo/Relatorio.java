@@ -35,13 +35,10 @@ public class Relatorio {
     }
     
     public void novoKML(String nome) {
-        kml = "<?xml version='1.0' encoding='UTF-8'?>\n" +
-"<kml xmlns='http://www.opengis.net/kml/2.2'>\n" +
-"	<Document>\n" +
-"		<name>" + nome + "</name>\n" +
-"		<description><![CDATA[]]></description>\n" +
-"		<Folder>\n" +
-"			<name>DelGIS</name>";
+        kml = "<?xml version='1.0' encoding='UTF-8'?>" +
+"<kml xmlns='http://www.opengis.net/kml/2.2'>" +
+"	<Document>" +
+"		<name>" + nome + "</name>";
     }
     
     public void adicionarBairro(String nomeBairro, int ocorrencias, String polygon) {
@@ -52,60 +49,58 @@ public class Relatorio {
         
         String hex = Integer.toHexString(pigmentacao);
         
-        kml += "<Placemark>\n" +
-"           <name>" + nomeBairro + "</name>\n" +
-"           <styleUrl>#poly-DB4436-1-" + pigmentacao + "-nodesc</styleUrl>\n" +
-"           <ExtendedData>\n" +
+        kml += "<Placemark>" +
+"           <name>" + nomeBairro + "</name>" +
+"           <styleUrl>#poly-DB4436-1-" + pigmentacao + "-nodesc</styleUrl>" +
+"           <ExtendedData>" +
 "           </ExtendedData>" + polygon + "</Placemark>";
         
-        styles.add("		<Style id='poly-DB4436-1-"+pigmentacao+"-nodesc-normal'>\n" +
-"			<LineStyle>\n" +
-"				<color>"+hex+"3644DB</color>\n" +
-"				<width>1</width>\n" +
-"			</LineStyle>\n" +
-"			<PolyStyle>\n" +
-"				<color>"+hex+"3644DB</color>\n" +
-"				<fill>1</fill>\n" +
-"				<outline>1</outline>\n" +
-"			</PolyStyle>\n" +
-"			<BalloonStyle>\n" +
-"				<text><![CDATA[<h3>$[name]</h3>]]></text>\n" +
-"			</BalloonStyle>\n" +
-"		</Style>\n" +
-"		<Style id='poly-DB4436-1-"+pigmentacao+"-nodesc-highlight'>\n" +
-"			<LineStyle>\n" +
-"				<color>"+hex+"3644DB</color>\n" +
-"				<width>2.0</width>\n" +
-"			</LineStyle>\n" +
-"			<PolyStyle>\n" +
-"				<color>"+hex+"3644DB</color>\n" +
-"				<fill>1</fill>\n" +
-"				<outline>1</outline>\n" +
-"			</PolyStyle>\n" +
-"			<BalloonStyle>\n" +
-"				<text><![CDATA[<h3>$[name]</h3>]]></text>\n" +
-"			</BalloonStyle>\n" +
-"		</Style>\n" +
-"		<StyleMap id='poly-DB4436-1-"+pigmentacao+"-nodesc'>\n" +
-"			<Pair>\n" +
-"				<key>normal</key>\n" +
-"				<styleUrl>#poly-DB4436-1-"+pigmentacao+"-nodesc-normal</styleUrl>\n" +
-"			</Pair>\n" +
-"			<Pair>\n" +
-"				<key>highlight</key>\n" +
-"				<styleUrl>#poly-DB4436-1-"+pigmentacao+"-nodesc-highlight</styleUrl>\n" +
-"			</Pair>\n" +
+        styles.add("		<Style id='poly-DB4436-1-"+pigmentacao+"-nodesc-normal'>" +
+"			<LineStyle>" +
+"				<color>ff3644DB</color>" +
+"				<width>1</width>" +
+"			</LineStyle>" +
+"			<PolyStyle>" +
+"				<color>"+hex+"3644DB</color>" +
+"				<fill>1</fill>" +
+"				<outline>1</outline>" +
+"			</PolyStyle>" +
+"			<BalloonStyle>" +
+"				<text><![CDATA[<h3>$[name]</h3>]]></text>" +
+"			</BalloonStyle>" +
+"		</Style>" +
+"		<Style id='poly-DB4436-1-"+pigmentacao+"-nodesc-highlight'>" +
+"			<LineStyle>" +
+"				<color>"+hex+"3644DB</color>" +
+"				<width>2.0</width>" +
+"			</LineStyle>" +
+"			<PolyStyle>" +
+"				<color>"+hex+"3644DB</color>" +
+"				<fill>1</fill>" +
+"				<outline>1</outline>" +
+"			</PolyStyle>" +
+"			<BalloonStyle>" +
+"				<text><![CDATA[<h3>$[name]</h3>]]></text>" +
+"			</BalloonStyle>" +
+"		</Style>" +
+"		<StyleMap id='poly-DB4436-1-"+pigmentacao+"-nodesc'>" +
+"			<Pair>" +
+"				<key>normal</key>" +
+"				<styleUrl>#poly-DB4436-1-"+pigmentacao+"-nodesc-normal</styleUrl>" +
+"			</Pair>" +
+"			<Pair>" +
+"				<key>highlight</key>" +
+"				<styleUrl>#poly-DB4436-1-"+pigmentacao+"-nodesc-highlight</styleUrl>" +
+"			</Pair>" +
 "		</StyleMap>");
     }
     
     public void finalizaKML() {    
-        kml += "</Folder>\n";
-        
         for (String style : styles) {
             kml += style;
         }
         
-        kml += "</Document>\n" +
+        kml += "</Document>" +
             "</kml>";
         
         try {
