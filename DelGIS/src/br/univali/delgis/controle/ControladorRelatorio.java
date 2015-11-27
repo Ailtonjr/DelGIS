@@ -33,7 +33,7 @@ public class ControladorRelatorio {
     }
     
     public void novoKML() {
-        kml.novoKML("DelGIS Map");
+        kml.novoKML("DelGIS_Map");
         
         ResultSet rs = kml.consultaIntercecoes();
         try {
