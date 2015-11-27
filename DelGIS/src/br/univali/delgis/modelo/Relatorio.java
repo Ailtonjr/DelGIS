@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class Relatorio {
@@ -16,6 +18,7 @@ public class Relatorio {
     private FileWriter fw;
     private BufferedWriter bw;
     private int totalOcorrencias = 0;
+    private List<String> styles = new ArrayList();
 
     public Relatorio() {
         con = new Conexao();
@@ -47,170 +50,61 @@ public class Relatorio {
             pigmentacao = (255 * ocorrencias) / totalOcorrencias;   // 255 é o limite da pigmentacao
         }
         
+        String hex = Integer.toHexString(pigmentacao);
         
         kml += "<Placemark>\n" +
 "           <name>" + nomeBairro + "</name>\n" +
-"           <styleUrl>#poly-0000FF-2-" + pigmentacao + "-nodesc</styleUrl>\n" +
+"           <styleUrl>#poly-DB4436-1-" + pigmentacao + "-nodesc</styleUrl>\n" +
 "           <ExtendedData>\n" +
 "           </ExtendedData>" + polygon + "</Placemark>";
+        
+        styles.add("		<Style id='poly-DB4436-1-"+pigmentacao+"-nodesc-normal'>\n" +
+"			<LineStyle>\n" +
+"				<color>ff3644DB</color>\n" +
+"				<width>1</width>\n" +
+"			</LineStyle>\n" +
+"			<PolyStyle>\n" +
+"				<color>"+hex+"3644DB</color>\n" +
+"				<fill>1</fill>\n" +
+"				<outline>1</outline>\n" +
+"			</PolyStyle>\n" +
+"			<BalloonStyle>\n" +
+"				<text><![CDATA[<h3>$[name]</h3>]]></text>\n" +
+"			</BalloonStyle>\n" +
+"		</Style>\n" +
+"		<Style id='poly-DB4436-1-"+pigmentacao+"-nodesc-highlight'>\n" +
+"			<LineStyle>\n" +
+"				<color>ff3644DB</color>\n" +
+"				<width>2.0</width>\n" +
+"			</LineStyle>\n" +
+"			<PolyStyle>\n" +
+"				<color>"+hex+"3644DB</color>\n" +
+"				<fill>1</fill>\n" +
+"				<outline>1</outline>\n" +
+"			</PolyStyle>\n" +
+"			<BalloonStyle>\n" +
+"				<text><![CDATA[<h3>$[name]</h3>]]></text>\n" +
+"			</BalloonStyle>\n" +
+"		</Style>\n" +
+"		<StyleMap id='poly-DB4436-1-"+pigmentacao+"-nodesc'>\n" +
+"			<Pair>\n" +
+"				<key>normal</key>\n" +
+"				<styleUrl>#poly-DB4436-1-"+pigmentacao+"-nodesc-normal</styleUrl>\n" +
+"			</Pair>\n" +
+"			<Pair>\n" +
+"				<key>highlight</key>\n" +
+"				<styleUrl>#poly-DB4436-1-"+pigmentacao+"-nodesc-highlight</styleUrl>\n" +
+"			</Pair>\n" +
+"		</StyleMap>");
     }
     
-    public void finalizaKML() {
-        kml += "</Folder>\n" +
-"		<Style id='poly-0000FF-2-132-nodesc-normal'>\n" +
-"			<LineStyle>\n" +
-"				<color>ffFF0000</color>\n" +
-"				<width>2</width>\n" +
-"			</LineStyle>\n" +
-"			<PolyStyle>\n" +
-"				<color>84FF0000</color>\n" +
-"				<fill>1</fill>\n" +
-"				<outline>1</outline>\n" +
-"			</PolyStyle>\n" +
-"			<BalloonStyle>\n" +
-"				<text><![CDATA[<h3>$[name]</h3>]]></text>\n" +
-"			</BalloonStyle>\n" +
-"		</Style>\n" +
-"		<Style id='poly-0000FF-2-132-nodesc-highlight'>\n" +
-"			<LineStyle>\n" +
-"				<color>ffFF0000</color>\n" +
-"				<width>3.0</width>\n" +
-"			</LineStyle>\n" +
-"			<PolyStyle>\n" +
-"				<color>84FF0000</color>\n" +
-"				<fill>1</fill>\n" +
-"				<outline>1</outline>\n" +
-"			</PolyStyle>\n" +
-"			<BalloonStyle>\n" +
-"				<text><![CDATA[<h3>$[name]</h3>]]></text>\n" +
-"			</BalloonStyle>\n" +
-"		</Style>\n" +
-"		<StyleMap id='poly-0000FF-2-132-nodesc'>\n" +
-"			<Pair>\n" +
-"				<key>normal</key>\n" +
-"				<styleUrl>#poly-0000FF-2-132-nodesc-normal</styleUrl>\n" +
-"			</Pair>\n" +
-"			<Pair>\n" +
-"				<key>highlight</key>\n" +
-"				<styleUrl>#poly-0000FF-2-132-nodesc-highlight</styleUrl>\n" +
-"			</Pair>\n" +
-"		</StyleMap>\n" +
-"		<Style id='poly-0000FF-2-255-nodesc-normal'>\n" +
-"			<LineStyle>\n" +
-"				<color>ffFF0000</color>\n" +
-"				<width>2</width>\n" +
-"			</LineStyle>\n" +
-"			<PolyStyle>\n" +
-"				<color>FFFF0000</color>\n" +
-"				<fill>1</fill>\n" +
-"				<outline>1</outline>\n" +
-"			</PolyStyle>\n" +
-"			<BalloonStyle>\n" +
-"				<text><![CDATA[<h3>$[name]</h3>]]></text>\n" +
-"			</BalloonStyle>\n" +
-"		</Style>\n" +
-"		<Style id='poly-0000FF-2-255-nodesc-highlight'>\n" +
-"			<LineStyle>\n" +
-"				<color>ffFF0000</color>\n" +
-"				<width>3.0</width>\n" +
-"			</LineStyle>\n" +
-"			<PolyStyle>\n" +
-"				<color>FFFF0000</color>\n" +
-"				<fill>1</fill>\n" +
-"				<outline>1</outline>\n" +
-"			</PolyStyle>\n" +
-"			<BalloonStyle>\n" +
-"				<text><![CDATA[<h3>$[name]</h3>]]></text>\n" +
-"			</BalloonStyle>\n" +
-"		</Style>\n" +
-"		<StyleMap id='poly-0000FF-2-255-nodesc'>\n" +
-"			<Pair>\n" +
-"				<key>normal</key>\n" +
-"				<styleUrl>#poly-0000FF-2-255-nodesc-normal</styleUrl>\n" +
-"			</Pair>\n" +
-"			<Pair>\n" +
-"				<key>highlight</key>\n" +
-"				<styleUrl>#poly-0000FF-2-255-nodesc-highlight</styleUrl>\n" +
-"			</Pair>\n" +
-"		</StyleMap>\n" +
-"		<Style id='poly-0000FF-2-50-nodesc-normal'>\n" +
-"			<LineStyle>\n" +
-"				<color>ffFF0000</color>\n" +
-"				<width>2</width>\n" +
-"			</LineStyle>\n" +
-"			<PolyStyle>\n" +
-"				<color>32FF0000</color>\n" +
-"				<fill>1</fill>\n" +
-"				<outline>1</outline>\n" +
-"			</PolyStyle>\n" +
-"			<BalloonStyle>\n" +
-"				<text><![CDATA[<h3>$[name]</h3>]]></text>\n" +
-"			</BalloonStyle>\n" +
-"		</Style>\n" +
-"		<Style id='poly-0000FF-2-50-nodesc-highlight'>\n" +
-"			<LineStyle>\n" +
-"				<color>ffFF0000</color>\n" +
-"				<width>3.0</width>\n" +
-"			</LineStyle>\n" +
-"			<PolyStyle>\n" +
-"				<color>32FF0000</color>\n" +
-"				<fill>1</fill>\n" +
-"				<outline>1</outline>\n" +
-"			</PolyStyle>\n" +
-"			<BalloonStyle>\n" +
-"				<text><![CDATA[<h3>$[name]</h3>]]></text>\n" +
-"			</BalloonStyle>\n" +
-"		</Style>\n" +
-"		<StyleMap id='poly-0000FF-2-50-nodesc'>\n" +
-"			<Pair>\n" +
-"				<key>normal</key>\n" +
-"				<styleUrl>#poly-0000FF-2-50-nodesc-normal</styleUrl>\n" +
-"			</Pair>\n" +
-"			<Pair>\n" +
-"				<key>highlight</key>\n" +
-"				<styleUrl>#poly-0000FF-2-50-nodesc-highlight</styleUrl>\n" +
-"			</Pair>\n" +
-"		</StyleMap>\n" +
-"		<Style id='poly-0000FF-3-0-nodesc-normal'>\n" +
-"			<LineStyle>\n" +
-"				<color>ffFF0000</color>\n" +
-"				<width>3</width>\n" +
-"			</LineStyle>\n" +
-"			<PolyStyle>\n" +
-"				<color> 0FF0000</color>\n" +
-"				<fill>1</fill>\n" +
-"				<outline>1</outline>\n" +
-"			</PolyStyle>\n" +
-"			<BalloonStyle>\n" +
-"				<text><![CDATA[<h3>$[name]</h3>]]></text>\n" +
-"			</BalloonStyle>\n" +
-"		</Style>\n" +
-"		<Style id='poly-0000FF-3-0-nodesc-highlight'>\n" +
-"			<LineStyle>\n" +
-"				<color>ffFF0000</color>\n" +
-"				<width>5.0</width>\n" +
-"			</LineStyle>\n" +
-"			<PolyStyle>\n" +
-"				<color> 0FF0000</color>\n" +
-"				<fill>1</fill>\n" +
-"				<outline>1</outline>\n" +
-"			</PolyStyle>\n" +
-"			<BalloonStyle>\n" +
-"				<text><![CDATA[<h3>$[name]</h3>]]></text>\n" +
-"			</BalloonStyle>\n" +
-"		</Style>\n" +
-"		<StyleMap id='poly-0000FF-3-0-nodesc'>\n" +
-"			<Pair>\n" +
-"				<key>normal</key>\n" +
-"				<styleUrl>#poly-0000FF-3-0-nodesc-normal</styleUrl>\n" +
-"			</Pair>\n" +
-"			<Pair>\n" +
-"				<key>highlight</key>\n" +
-"				<styleUrl>#poly-0000FF-3-0-nodesc-highlight</styleUrl>\n" +
-"			</Pair>\n" +
-"		</StyleMap>\n" +
-"	</Document>\n" +
-"</kml>";
+    public void finalizaKML() {    
+        for (String style : styles) {
+            kml += style;
+        }
+        
+        kml += "</Document>\n" +
+            "</kml>";
         
         try {
             fw = new FileWriter("DelGIS.kml");
