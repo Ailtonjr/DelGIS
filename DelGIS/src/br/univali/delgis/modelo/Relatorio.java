@@ -38,10 +38,7 @@ public class Relatorio {
         kml = "<?xml version='1.0' encoding='UTF-8'?>\n" +
 "<kml xmlns='http://www.opengis.net/kml/2.2'>\n" +
 "	<Document>\n" +
-"		<name>" + nome + "</name>\n" +
-"		<description><![CDATA[]]></description>\n" +
-"		<Folder>\n" +
-"			<name>DelGIS</name>";
+"		<name>" + nome + "</name>\n";
     }
     
     public void adicionarBairro(String nomeBairro, int ocorrencias, String polygon) {
@@ -60,7 +57,7 @@ public class Relatorio {
         
         styles.add("		<Style id='poly-DB4436-1-"+pigmentacao+"-nodesc-normal'>\n" +
 "			<LineStyle>\n" +
-"				<color>"+hex+"3644DB</color>\n" +
+"				<color>FF3644DB</color>\n" +
 "				<width>1</width>\n" +
 "			</LineStyle>\n" +
 "			<PolyStyle>\n" +
@@ -99,7 +96,7 @@ public class Relatorio {
     }
     
     public void finalizaKML() {    
-        kml += "</Folder>\n";
+        //kml += "</Folder>\n";
         
         for (String style : styles) {
             kml += style;
