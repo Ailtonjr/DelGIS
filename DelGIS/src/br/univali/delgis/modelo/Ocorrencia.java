@@ -12,21 +12,26 @@ public class Ocorrencia {
     private double longitude;
     private double latitude;
     private int id_tipo;
+    private Tipo tipo;
     private Conexao con = new Conexao();
 
-    public Ocorrencia(int id,String descricao, double longitude, double latitude, int tipoOcorrencia) {
+    public Ocorrencia(int id,String descricao, double longitude, double latitude, String tipoOcorrencia) {
+        tipo = new Tipo(tipoOcorrencia);
         this.id = id;
         this.descricao = descricao;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.id_tipo = tipoOcorrencia;
+        this.id_tipo = tipo.getId();
+        System.out.println(tipoOcorrencia + " " +tipo.getId());
     }
     
-    public Ocorrencia(String descricao, double longitude, double latitude, int tipoOcorrencia) {
+    public Ocorrencia(String descricao, double longitude, double latitude, String tipoOcorrencia) {
+        tipo = new Tipo(tipoOcorrencia);
         this.descricao = descricao;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.id_tipo = tipoOcorrencia;
+        this.id_tipo = tipo.getId();
+        System.out.println(tipoOcorrencia + " " +tipo.getId());
     }
     
     public Ocorrencia(int id) {

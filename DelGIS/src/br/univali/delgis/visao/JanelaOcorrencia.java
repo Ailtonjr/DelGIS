@@ -1,12 +1,17 @@
 package br.univali.delgis.visao;
 
 import br.univali.delgis.controle.ControladorOcorrencia;
+import br.univali.delgis.controle.ControladorTipo;
 
 public class JanelaOcorrencia extends javax.swing.JDialog {
+
+    ControladorOcorrencia ctrlOcorrencia = new ControladorOcorrencia();
+    ControladorTipo ctrlTipo = new ControladorTipo();
 
     public JanelaOcorrencia(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        comboBox_tipos.setModel(ctrlTipo.montaComboBox());
     }
 
     /**
@@ -23,7 +28,7 @@ public class JanelaOcorrencia extends javax.swing.JDialog {
         scrollPane_Descricao = new javax.swing.JScrollPane();
         textArea_Descricao = new javax.swing.JTextArea();
         jLabel_Tipo = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        comboBox_tipos = new javax.swing.JComboBox();
         label_Long = new javax.swing.JLabel();
         field_Long = new javax.swing.JTextField();
         label_Lat = new javax.swing.JLabel();
@@ -47,8 +52,6 @@ public class JanelaOcorrencia extends javax.swing.JDialog {
         scrollPane_Descricao.setViewportView(textArea_Descricao);
 
         jLabel_Tipo.setText("Tipo de Ocorrencia");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         label_Long.setText("Longitude");
 
@@ -86,7 +89,7 @@ public class JanelaOcorrencia extends javax.swing.JDialog {
                                 .addComponent(field_Lat, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(scrollPane_Descricao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(button_Confirmar))
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboBox_tipos, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         panel_PrincipalLayout.setVerticalGroup(
@@ -99,7 +102,7 @@ public class JanelaOcorrencia extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel_Tipo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboBox_tipos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_Long)
@@ -133,23 +136,21 @@ public class JanelaOcorrencia extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
 
-
     private void button_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConfirmarActionPerformed
-        ControladorOcorrencia controladorOcorrencia = new ControladorOcorrencia();
-        controladorOcorrencia.novaOcorrencia(textArea_Descricao.getText(), Double.parseDouble(field_Long.getText()), Double.parseDouble(field_Lat.getText()), 0);
+        ctrlOcorrencia.novaOcorrencia(textArea_Descricao.getText(), Double.parseDouble(field_Long.getText()), Double.parseDouble(field_Lat.getText()), comboBox_tipos.getSelectedItem().toString());
         this.dispose();
     }//GEN-LAST:event_button_ConfirmarActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-   
+
     }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_Confirmar;
+    private javax.swing.JComboBox comboBox_tipos;
     private javax.swing.JTextField field_Lat;
     private javax.swing.JTextField field_Long;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel_Tipo;
     private javax.swing.JLabel label_Descricao;
     private javax.swing.JLabel label_Lat;

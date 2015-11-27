@@ -4,6 +4,8 @@ package br.univali.delgis.controle;
 import br.univali.delgis.modelo.Tipo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ControladorTipo {
@@ -50,9 +52,27 @@ public class ControladorTipo {
                 modelo.addRow(vetor);
             }
         } catch (SQLException ex) {
-            
+            JOptionPane.showMessageDialog(null, "Erro ao montar Tabela");
+            ex.printStackTrace();
         }
 
         return modelo;
+    }
+    
+        
+    public DefaultComboBoxModel montaComboBox(){
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        tipo = new Tipo();
+        ResultSet rs = tipo.buscaTipos();
+        
+        try {
+            while (rs.next()) {
+                model.addElement(rs.getString(2));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao montar ComboBox");
+            ex.printStackTrace();
+        }
+        return model;
     }
 }

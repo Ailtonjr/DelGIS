@@ -14,12 +14,12 @@ public class ControladorOcorrencia {
     public ControladorOcorrencia() {
     }
     
-    public void novaOcorrencia(String descricao, double longitude, double latitude, int tipoOcorrencia) {
+    public void novaOcorrencia(String descricao, double longitude, double latitude, String tipoOcorrencia) {
         ocorrencia = new Ocorrencia(descricao, longitude, latitude, tipoOcorrencia);
         ocorrencia.salvarBanco();
     }
     
-    public void atualizarOcorrencia(int id,String descricao, double longitude, double latitude, int tipoOcorrencia) {
+    public void atualizarOcorrencia(int id,String descricao, double longitude, double latitude, String tipoOcorrencia) {
         ocorrencia = new Ocorrencia(id, descricao, longitude, latitude, tipoOcorrencia);
         ocorrencia.atualizaBanco();
     }
