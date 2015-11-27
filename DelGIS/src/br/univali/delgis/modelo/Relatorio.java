@@ -41,7 +41,7 @@ public class Relatorio {
 "		<name>" + nome + "</name>\n" +
 "		<description><![CDATA[]]></description>\n" +
 "		<Folder>\n" +
-"			<name>DelGIS.kml</name>";
+"			<name>DelGIS</name>";
     }
     
     public void adicionarBairro(String nomeBairro, int ocorrencias, String polygon) {
@@ -60,7 +60,7 @@ public class Relatorio {
         
         styles.add("		<Style id='poly-DB4436-1-"+pigmentacao+"-nodesc-normal'>\n" +
 "			<LineStyle>\n" +
-"				<color>ff3644DB</color>\n" +
+"				<color>"+hex+"3644DB</color>\n" +
 "				<width>1</width>\n" +
 "			</LineStyle>\n" +
 "			<PolyStyle>\n" +
@@ -74,7 +74,7 @@ public class Relatorio {
 "		</Style>\n" +
 "		<Style id='poly-DB4436-1-"+pigmentacao+"-nodesc-highlight'>\n" +
 "			<LineStyle>\n" +
-"				<color>ff3644DB</color>\n" +
+"				<color>"+hex+"3644DB</color>\n" +
 "				<width>2.0</width>\n" +
 "			</LineStyle>\n" +
 "			<PolyStyle>\n" +
@@ -99,6 +99,8 @@ public class Relatorio {
     }
     
     public void finalizaKML() {    
+        kml += "</Folder>\n";
+        
         for (String style : styles) {
             kml += style;
         }
