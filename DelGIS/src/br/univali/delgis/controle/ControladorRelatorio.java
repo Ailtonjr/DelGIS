@@ -49,6 +49,7 @@ public class ControladorRelatorio {
         } catch (SQLException ex) {
             Logger.getLogger(ControladorRelatorio.class.getName()).log(Level.SEVERE, null, ex);
         }
+        kml.finalizaKML();
     }
     
 }

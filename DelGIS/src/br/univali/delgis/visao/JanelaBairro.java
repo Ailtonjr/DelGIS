@@ -255,6 +255,7 @@ public class JanelaBairro extends javax.swing.JDialog {
     private void button_SalvarBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_SalvarBairroActionPerformed
         ControladorBairro ctrlBairro = new ControladorBairro();
         ctrlBairro.novoBairro(field_Nome.getText(), modelo);
+        this.dispose();
     }//GEN-LAST:event_button_SalvarBairroActionPerformed
 
     private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed

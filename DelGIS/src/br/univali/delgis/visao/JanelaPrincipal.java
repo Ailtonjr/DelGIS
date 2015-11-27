@@ -382,7 +382,7 @@ public final class JanelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItem_RelatorioActionPerformed
 
     private void menuItem_KmlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_KmlActionPerformed
-        new ControladorRelatorio().novoRelatorio();
+        new ControladorRelatorio().novoKML();
     }//GEN-LAST:event_menuItem_KmlActionPerformed
 
     public static void main(String args[]) {

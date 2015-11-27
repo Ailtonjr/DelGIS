@@ -42,8 +42,11 @@ public class Relatorio {
     }
     
     public void adicionarBairro(String nomeBairro, int ocorrencias, String polygon) {
+        int pigmentacao = 0;
+        if(totalOcorrencias > 0){
+            pigmentacao = (255 * ocorrencias) / totalOcorrencias;   // 255 é o limite da pigmentacao
+        }
         
-        int pigmentacao = (255 * ocorrencias) / totalOcorrencias;   // 255 é o limite da pigmentacao
         
         kml += "<Placemark>\n" +
 "           <name>" + nomeBairro + "</name>\n" +
@@ -216,6 +219,7 @@ public class Relatorio {
             bw.append(kml);
             bw.close();
             fw.close();
+            JOptionPane.showMessageDialog(null, "Arquivo KML salvo com sucesso.");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao salvar arquivo KML", "Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -246,7 +250,6 @@ public class Relatorio {
             rs.next();
             
             totalOcorrencias = rs.getInt(1);
-            System.out.println("teste");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao analisar intersecoes\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();

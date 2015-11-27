@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns='http://www.opengis.net/kml/2.2'>
+	<Document>
+		<name>DelGIS Map</name>
+		<description><![CDATA[]]></description>
+		<Folder>
+			<name>DelGIS.kml</name><Placemark>
+           <name>1</name>
+           <styleUrl>#poly-0000FF-2-36-nodesc</styleUrl>
+           <ExtendedData>
+           </ExtendedData><Polygon><outerBoundaryIs><LinearRing><coordinates>-53.349609399999999,-25.304303800000003 -53.415527300000001,-27.078691599999999 -52.3828125,-27.156920499999998 -52.338867199999996,-25.344026000000003 -53.349609399999999,-25.304303800000003</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark><Placemark>
+           <name>2</name>
+           <styleUrl>#poly-0000FF-2-72-nodesc</styleUrl>
+           <ExtendedData>
+           </ExtendedData><Polygon><outerBoundaryIs><LinearRing><coordinates>-51.481933599999998,-25.482951199999999 -51.723632800000004,-27.430289699999999 -50.646972699999999,-27.644606400000004 -50.361328100000001,-25.562264999999996 -51.481933599999998,-25.482951199999999</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark><Placemark>
+           <name>3</name>
+           <styleUrl>#poly-0000FF-2-109-nodesc</styleUrl>
+           <ExtendedData>
+           </ExtendedData><Polygon><outerBoundaryIs><LinearRing><coordinates>-53.503418000000003,-27.877928300000004 -53.811035200000006,-29.573457100000002 -52.844238300000001,-29.859701399999999 -52.426757800000004,-28.149503200000009 -53.503418000000003,-27.877928300000004</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark><Placemark>
+           <name>4</name>
+           <styleUrl>#poly-0000FF-2-36-nodesc</styleUrl>
+           <ExtendedData>
+           </ExtendedData><Polygon><outerBoundaryIs><LinearRing><coordinates>-51.701660199999999,-28.323724600000002 -52.163085899999999,-29.745301699999999 -51.086425800000001,-30.088107800000003 -50.471191400000002,-28.729130500000004 -51.701660199999999,-28.323724600000002</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark></Folder>
+		<Style id='poly-0000FF-2-132-nodesc-normal'>
+			<LineStyle>
+				<color>ffFF0000</color>
+				<width>2</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>84FF0000</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<Style id='poly-0000FF-2-132-nodesc-highlight'>
+			<LineStyle>
+				<color>ffFF0000</color>
+				<width>3.0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>84FF0000</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<StyleMap id='poly-0000FF-2-132-nodesc'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#poly-0000FF-2-132-nodesc-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#poly-0000FF-2-132-nodesc-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id='poly-0000FF-2-255-nodesc-normal'>
+			<LineStyle>
+				<color>ffFF0000</color>
+				<width>2</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>FFFF0000</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<Style id='poly-0000FF-2-255-nodesc-highlight'>
+			<LineStyle>
+				<color>ffFF0000</color>
+				<width>3.0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>FFFF0000</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<StyleMap id='poly-0000FF-2-255-nodesc'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#poly-0000FF-2-255-nodesc-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#poly-0000FF-2-255-nodesc-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id='poly-0000FF-2-50-nodesc-normal'>
+			<LineStyle>
+				<color>ffFF0000</color>
+				<width>2</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>32FF0000</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<Style id='poly-0000FF-2-50-nodesc-highlight'>
+			<LineStyle>
+				<color>ffFF0000</color>
+				<width>3.0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>32FF0000</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<StyleMap id='poly-0000FF-2-50-nodesc'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#poly-0000FF-2-50-nodesc-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#poly-0000FF-2-50-nodesc-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id='poly-0000FF-3-0-nodesc-normal'>
+			<LineStyle>
+				<color>ffFF0000</color>
+				<width>3</width>
+			</LineStyle>
+			<PolyStyle>
+				<color> 0FF0000</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<Style id='poly-0000FF-3-0-nodesc-highlight'>
+			<LineStyle>
+				<color>ffFF0000</color>
+				<width>5.0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color> 0FF0000</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<StyleMap id='poly-0000FF-3-0-nodesc'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#poly-0000FF-3-0-nodesc-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#poly-0000FF-3-0-nodesc-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+	</Document>
+</kml>
