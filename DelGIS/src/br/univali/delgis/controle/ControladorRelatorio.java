@@ -9,11 +9,11 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
-public class ControleRelatorio {
+public class ControladorRelatorio {
 
     private Relatorio kml = new Relatorio();
     
-    public ControleRelatorio() {
+    public ControladorRelatorio() {
     }
     
     public void novoRelatorio() {
@@ -47,7 +47,7 @@ public class ControleRelatorio {
                 */
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ControleRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControladorRelatorio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

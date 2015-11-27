@@ -251,7 +251,6 @@ public class Relatorio {
             JOptionPane.showMessageDialog(null, "Erro ao analisar intersecoes\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
-        //con.encerrarConexao();
     }
     
     public FileWriter getFw() {

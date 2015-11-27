@@ -2,7 +2,7 @@ package br.univali.delgis.visao;
 
 import br.univali.delgis.controle.ControladorBairro;
 import br.univali.delgis.controle.ControladorOcorrencia;
-import br.univali.delgis.controle.ControleRelatorio;
+import br.univali.delgis.controle.ControladorRelatorio;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -55,10 +55,11 @@ public final class JanelaPrincipal extends javax.swing.JFrame {
         menuItem_Bairro = new javax.swing.JMenuItem();
         menuItem_Ocorrencia = new javax.swing.JMenuItem();
         menuItem_TipoOcorrencia = new javax.swing.JMenuItem();
+        menu_Exportar = new javax.swing.JMenu();
+        menuItem_Kml = new javax.swing.JMenuItem();
         menu_Relatorio = new javax.swing.JMenu();
         menuItem_Relatorio = new javax.swing.JMenuItem();
         menu_Sobre = new javax.swing.JMenu();
-        menu_Sair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DelGIS - Início");
@@ -265,8 +266,22 @@ public final class JanelaPrincipal extends javax.swing.JFrame {
 
         menuBar.add(menu_Gerenciar);
 
+        menu_Exportar.setText("Exportar");
+
+        menuItem_Kml.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.CTRL_MASK));
+        menuItem_Kml.setText("KML");
+        menuItem_Kml.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem_KmlActionPerformed(evt);
+            }
+        });
+        menu_Exportar.add(menuItem_Kml);
+
+        menuBar.add(menu_Exportar);
+
         menu_Relatorio.setText("Relatórios");
 
+        menuItem_Relatorio.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
         menuItem_Relatorio.setText("Ocorrências por Bairro");
         menuItem_Relatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,9 +299,6 @@ public final class JanelaPrincipal extends javax.swing.JFrame {
             }
         });
         menuBar.add(menu_Sobre);
-
-        menu_Sair.setText("Sair");
-        menuBar.add(menu_Sair);
 
         setJMenuBar(menuBar);
 
@@ -366,10 +378,12 @@ public final class JanelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menu_SobreMouseClicked
 
     private void menuItem_RelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_RelatorioActionPerformed
-        ControleRelatorio ctrlRelatorio = new ControleRelatorio();
-        ctrlRelatorio.novoRelatorio();
-        //ctrlRelatorio.novoKML();
+        new ControladorRelatorio().novoRelatorio();
     }//GEN-LAST:event_menuItem_RelatorioActionPerformed
+
+    private void menuItem_KmlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_KmlActionPerformed
+        new ControladorRelatorio().novoRelatorio();
+    }//GEN-LAST:event_menuItem_KmlActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -399,12 +413,13 @@ public final class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel label_SeparadorOcorrencia;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuItem_Bairro;
+    private javax.swing.JMenuItem menuItem_Kml;
     private javax.swing.JMenuItem menuItem_Ocorrencia;
     private javax.swing.JMenuItem menuItem_Relatorio;
     private javax.swing.JMenuItem menuItem_TipoOcorrencia;
+    private javax.swing.JMenu menu_Exportar;
     private javax.swing.JMenu menu_Gerenciar;
     private javax.swing.JMenu menu_Relatorio;
-    private javax.swing.JMenu menu_Sair;
     private javax.swing.JMenu menu_Sobre;
     private javax.swing.JPanel panel_Bairros;
     private javax.swing.JPanel panel_Ocorrencias;
